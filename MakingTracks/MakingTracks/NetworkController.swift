@@ -19,6 +19,8 @@ class NetworkController
         
     }
     
+    var delegate: NetworkControllerDelegate?
+    
     private lazy var session: URLSession =
     {
         let config = URLSessionConfiguration.default
@@ -50,16 +52,18 @@ class NetworkController
             if let mimeType = httpResponse.mimeType, mimeType == "application/json"
             {
                 let decoder = JSONDecoder()
-                var myHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
-                
-                print(myHealth?.securityTokenOK)
+                if let APIHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
+                {
+                    self.delegate?.PTVAPIStatusUpdate(healthCheck: APIHealth)
+                    print(APIHealth.securityTokenOK)
+                }
             }
                 
         }
         
         task.resume()
         
-        return false
+        return true
     }
     
     //UPDATE RETURN TYPE
