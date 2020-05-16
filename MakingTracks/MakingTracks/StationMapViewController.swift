@@ -17,6 +17,8 @@ class StationMapViewController: UIViewController
         // Do any additional setup after loading the view.
         
         PTVAPISupportClass.generateURL(withDevIDAndKey: "test")
+        
+        
     }
 
     
