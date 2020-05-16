@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9A8F658246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */; };
 		B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */; };
 		B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */; };
 		B9B93E66246F6F5C007F4E10 /* StationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E65246F6F5C007F4E10 /* StationMapViewController.swift */; };
@@ -16,6 +17,9 @@
 		B9B93E79246F6F5D007F4E10 /* MakingTracksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E78246F6F5D007F4E10 /* MakingTracksTests.swift */; };
 		B9B93E84246F6F5D007F4E10 /* MakingTracksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E83246F6F5D007F4E10 /* MakingTracksUITests.swift */; };
 		B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E94246F7CFA007F4E10 /* PTVAPISupportClass.m */; };
+		B9B93E97246F8CA6007F4E10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E96246F8CA6007F4E10 /* Constants.swift */; };
+		B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E98246F9069007F4E10 /* TransportType.swift */; };
+		B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E9A246F9169007F4E10 /* NetworkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTVAPIHealthCheckModel.swift; sourceTree = "<group>"; };
 		B9B93E5E246F6F5C007F4E10 /* MakingTracks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakingTracks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +58,9 @@
 		B9B93E92246F7CCE007F4E10 /* PTVAPISupportClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTVAPISupportClass.h; sourceTree = "<group>"; };
 		B9B93E93246F7CFA007F4E10 /* MakingTracks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MakingTracks-Bridging-Header.h"; sourceTree = "<group>"; };
 		B9B93E94246F7CFA007F4E10 /* PTVAPISupportClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTVAPISupportClass.m; sourceTree = "<group>"; };
+		B9B93E96246F8CA6007F4E10 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B9B93E98246F9069007F4E10 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
+		B9B93E9A246F9169007F4E10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,10 @@
 				B9B93E6A246F6F5D007F4E10 /* Assets.xcassets */,
 				B9B93E6C246F6F5D007F4E10 /* LaunchScreen.storyboard */,
 				B9B93E6F246F6F5D007F4E10 /* Info.plist */,
+				B9B93E96246F8CA6007F4E10 /* Constants.swift */,
+				B9B93E98246F9069007F4E10 /* TransportType.swift */,
+				B9B93E9A246F9169007F4E10 /* NetworkController.swift */,
+				B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */,
 			);
 			path = MakingTracks;
 			sourceTree = "<group>";
@@ -275,9 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A8F658246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift in Sources */,
+				B9B93E97246F8CA6007F4E10 /* Constants.swift in Sources */,
 				B9B93E66246F6F5C007F4E10 /* StationMapViewController.swift in Sources */,
 				B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */,
+				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
 				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
+				B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */,
 				B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

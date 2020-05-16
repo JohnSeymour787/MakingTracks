@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 
-
 struct Constants
 {
     struct LocationSearch

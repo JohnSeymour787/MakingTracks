@@ -16,7 +16,8 @@ class StationMapViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        PTVAPISupportClass.generateURL(withDevIDAndKey: "test")
+
+        NetworkController.shared.APIhealthCheck()
         
         
     }

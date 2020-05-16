@@ -21,10 +21,9 @@
 
 +(NSURL*) generateURLWithDevIDAndKey:(NSString*) urlPath
 {
-    
-    NSString *hardcodedURL = @"http://timetableapi.ptv.vic.gov.au";
-    NSString *hardcodedDevID = @"3001590";
-    NSString *hardcodedkey = @"c8dadf8a-8725-4e9f-9936-c88b97fc3918";
+    static NSString *hardcodedURL = @"https://timetableapi.ptv.vic.gov.au";
+    static NSString *hardcodedDevID = @"3001590";
+    static NSString *hardcodedkey = @"c8dadf8a-8725-4e9f-9936-c88b97fc3918";
     
     NSRange deleteRange ={0,[hardcodedURL length]};
     NSMutableString *urlString = [[NSMutableString alloc]initWithString:urlPath];
