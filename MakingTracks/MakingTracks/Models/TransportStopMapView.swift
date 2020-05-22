@@ -15,6 +15,7 @@ class TransportStopMapView: MKAnnotationView
     {
         willSet
         {
+            //New value is passed as part of the willSet
             guard let transportStopAnnotation = newValue as? TransportStopMapAnnotation else
             {
                 return
@@ -22,20 +23,19 @@ class TransportStopMapView: MKAnnotationView
 
             canShowCallout = true
             
-            
-            
+            //Creating a custom UILabel for the subtitle to be the callout's detail view
             let subtitle = UILabel()
             subtitle.numberOfLines = 0
-            subtitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
+            subtitle.font = UIFont.preferredFont(forTextStyle: .subheadline).withSize(12)
             subtitle.text = "Suburb: \(transportStopAnnotation.suburb)"
             detailCalloutAccessoryView = subtitle
             
+            //Timetable button with custom image as the callout's right view
             let timetableButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 35, height: 35)))
             timetableButton.setBackgroundImage(UIImage(named: "TimetableIcon"), for: .normal)
             rightCalloutAccessoryView = timetableButton
             image = UIImage(named: "MetroStationIcon")
 
-            
         }
     }
 }

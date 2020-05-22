@@ -23,6 +23,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
     }
     
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad()
     {
@@ -32,6 +33,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         NetworkController.shared.delegate = self
         NetworkController.shared.APIhealthCheck()
         mapView.delegate = self
+        searchTextField.delegate = self
         mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         let annotation = MKPointAnnotation()
         annotation.coordinate = Constants.LocationSearch.MelbourneCDB
@@ -52,6 +54,29 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
     }
 
+}
+
+extension StationMapViewController: UITextFieldDelegate
+{
+    //If touches occur off the keyboard, then close it and reset the search bar text
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        searchTextField.resignFirstResponder()
+        searchTextField.text = ""
+    }
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        print(textField.text!)
+        
+        //MARK: TODO
+        //if text != "" then do a segue to the search screen. then reset .text = ""
+        //else, do nothing
+        
+        return false
+    }
 }
 
 extension StationMapViewController: MKMapViewDelegate
