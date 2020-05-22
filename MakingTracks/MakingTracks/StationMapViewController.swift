@@ -31,7 +31,8 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         updateMapRegion(range: 100)
         NetworkController.shared.delegate = self
         NetworkController.shared.APIhealthCheck()
-        
+        mapView.delegate = self
+        mapView.register(TransportStopMapMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         let annotation = MKPointAnnotation()
         annotation.coordinate = Constants.LocationSearch.MelbourneCDB
         annotation.title = "Center"
@@ -54,3 +55,64 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
 
 }
 
+extension StationMapViewController: MKMapViewDelegate
+{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        var annotationView = MKMarkerAnnotationView()
+        
+        guard let annotation = annotation as? TransportStopMapAnnotation else
+        {
+            return nil
+        }
+        
+        //If a pin of this identifier already exists, use it
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView
+        {
+            annotationView = dequeuedView
+        }
+        //Otherwise, need to create new annotation
+        else
+        {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        }
+        
+        /*
+        var annotationView = MKPinAnnotationView()
+        
+        guard let annotation = annotation as? TransportStopMapAnnotation else
+        {
+            return nil
+        }
+        
+        //If a pin of this identifier already exists, use it
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKPinAnnotationView
+        {
+            annotationView = dequeuedView
+        }
+        //Otherwise, need to create new annotation
+        else
+        {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
+        }
+ */
+        
+        //annotationView.pinTintColor = .blue
+        
+        //annotationView.image = UIImage
+        
+        annotationView.canShowCallout = true
+        
+        let title = UILabel()
+        title.numberOfLines = 0
+        title.font = UIFont.preferredFont(forTextStyle: .callout)
+        //title.text = "Title"
+        annotationView.largeContentTitle = "Things"
+        annotationView.detailCalloutAccessoryView = title
+        //annotationView.tit
+        //annotationView.leftCalloutAccessoryView
+        //annotationView.rightCalloutAccessoryView
+        return annotationView
+        
+    }
+}

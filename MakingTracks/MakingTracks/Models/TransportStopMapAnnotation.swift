@@ -28,13 +28,16 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
         super.init()
     }
     
+    //Title displayed to the user on the MapKit pin
     var title: String?
     {
         return name
     }
     
-    static func decodeToArray(rawJSON: Any) throws -> [TransportStopMapAnnotation]?
+    ///Takes a serialised raw JSON 'Any' object and attempts to convert to an array of class instances
+    static func decodeToArray(rawJSON: Any) -> [TransportStopMapAnnotation]?
     {
+        //Need to get the inner "stops" array from the JSON server response
         guard
             let jsonOuterObject = rawJSON as? [String: Any],
             let stopsArray = jsonOuterObject["stops"] as? [Any]
@@ -50,6 +53,7 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
         {
             if let stop = element as? [String: Any]
             {
+                //If any key-value conversion fails, the object is not added to the array
                 if let name = stop["stop_name"] as? String,
                    let suburb = stop["stop_suburb"] as? String,
                    let stopID = stop["stop_id"] as? Int,
