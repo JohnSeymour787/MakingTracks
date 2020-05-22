@@ -12,7 +12,7 @@
 		B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */; };
 		B9B336EB24776D8200063EDE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B336EA24776D8200063EDE /* MapKit.framework */; };
 		B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */; };
-		B9B336F02477B1E100063EDE /* TransportStopMapMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B336EF2477B1E100063EDE /* TransportStopMapMarkerView.swift */; };
+		B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */; };
 		B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */; };
 		B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */; };
 		B9B93E66246F6F5C007F4E10 /* StationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E65246F6F5C007F4E10 /* StationMapViewController.swift */; };
@@ -50,7 +50,7 @@
 		B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerDelegate.swift; sourceTree = "<group>"; };
 		B9B336EA24776D8200063EDE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopMapAnnotation.swift; sourceTree = "<group>"; };
-		B9B336EF2477B1E100063EDE /* TransportStopMapMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopMapMarkerView.swift; sourceTree = "<group>"; };
+		B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopMapView.swift; sourceTree = "<group>"; };
 		B9B93E5E246F6F5C007F4E10 /* MakingTracks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakingTracks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 				B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */,
 				B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */,
 				B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */,
-				B9B336EF2477B1E100063EDE /* TransportStopMapMarkerView.swift */,
+				B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 				B9B93E66246F6F5C007F4E10 /* StationMapViewController.swift in Sources */,
 				B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */,
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
-				B9B336F02477B1E100063EDE /* TransportStopMapMarkerView.swift in Sources */,
+				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
 				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
 				B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */,
 				B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */,

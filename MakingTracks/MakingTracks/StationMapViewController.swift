@@ -32,7 +32,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         NetworkController.shared.delegate = self
         NetworkController.shared.APIhealthCheck()
         mapView.delegate = self
-        mapView.register(TransportStopMapMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         let annotation = MKPointAnnotation()
         annotation.coordinate = Constants.LocationSearch.MelbourneCDB
         annotation.title = "Center"
@@ -57,9 +57,10 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
 
 extension StationMapViewController: MKMapViewDelegate
 {
+    /*
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        var annotationView = MKMarkerAnnotationView()
+        var annotationView = MKAnnotationView()
         
         guard let annotation = annotation as? TransportStopMapAnnotation else
         {
@@ -77,7 +78,7 @@ extension StationMapViewController: MKMapViewDelegate
             annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
         
-        /*
+        /*/
         var annotationView = MKPinAnnotationView()
         
         guard let annotation = annotation as? TransportStopMapAnnotation else
@@ -96,6 +97,7 @@ extension StationMapViewController: MKMapViewDelegate
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
         }
  */
+        /*annotationView.t
         
         //annotationView.pinTintColor = .blue
         
@@ -115,4 +117,14 @@ extension StationMapViewController: MKMapViewDelegate
         return annotationView
         
     }
+    */
+ */
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        //Transition here to scheduled services screen
+        //Either with segue to another screen
+        //Or, make a view that comes up when tapped, see the linkedin vid about mapkit
+    }
+    
 }
