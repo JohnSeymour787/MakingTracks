@@ -16,25 +16,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wr-p5-goN">
-                                <rect key="frame" x="0.0" y="52" width="414" height="810"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4W-Rd-5Hq">
-                                <rect key="frame" x="88.5" y="52" width="237" height="40"/>
+                                <rect key="frame" x="57.5" y="44" width="299" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="237" id="AFQ-KA-oXJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="Ho5-Sg-nXz"/>
+                                    <constraint firstAttribute="height" constant="40" id="3xa-vQ-tXx"/>
+                                    <constraint firstAttribute="width" constant="299" id="ZjH-th-4Ly"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="9Wr-p5-goN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2Uw-CS-2nV"/>
+                            <constraint firstAttribute="bottom" secondItem="9Wr-p5-goN" secondAttribute="bottom" id="3AK-cf-a6N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Wr-p5-goN" secondAttribute="trailing" id="Mps-zW-qeE"/>
-                            <constraint firstItem="d4W-Rd-5Hq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="rgT-7B-HaV"/>
-                            <constraint firstItem="d4W-Rd-5Hq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xqe-LG-X1Z"/>
-                            <constraint firstItem="9Wr-p5-goN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="yjq-rm-wVO"/>
+                            <constraint firstItem="d4W-Rd-5Hq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wFJ-by-tc7"/>
+                            <constraint firstItem="9Wr-p5-goN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xj9-Ah-2qa"/>
+                            <constraint firstItem="d4W-Rd-5Hq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yky-AH-Azo"/>
                             <constraint firstItem="9Wr-p5-goN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zAh-hh-ghS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

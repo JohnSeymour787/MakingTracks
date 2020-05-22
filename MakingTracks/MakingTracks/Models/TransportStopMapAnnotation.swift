@@ -28,11 +28,12 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
         super.init()
     }
     
-    //Title displayed to the user on the MapKit pin
+    //Title displayed to the user on the MapKit annotation view callout
     var title: String?
     {
         return name
     }
+    
     
     ///Takes a serialised raw JSON 'Any' object and attempts to convert to an array of class instances
     static func decodeToArray(rawJSON: Any) -> [TransportStopMapAnnotation]?

@@ -24,16 +24,18 @@ class TransportStopMapView: MKAnnotationView
             
             
             
-            let title = UILabel()
-            title.numberOfLines = 0
-            title.font = UIFont.preferredFont(forTextStyle: .callout)
-            //title.text = "Title"
-            largeContentTitle = "Things"
-            detailCalloutAccessoryView = title
-            title.text? = "my title"
-            rightCalloutAccessoryView = UIButton(type: .infoLight
-            )
+            let subtitle = UILabel()
+            subtitle.numberOfLines = 0
+            subtitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
+            subtitle.text = "Suburb: \(transportStopAnnotation.suburb)"
+            detailCalloutAccessoryView = subtitle
+            
+            let timetableButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 35, height: 35)))
+            timetableButton.setBackgroundImage(UIImage(named: "TimetableIcon"), for: .normal)
+            rightCalloutAccessoryView = timetableButton
             image = UIImage(named: "MetroStationIcon")
+
+            
         }
     }
 }

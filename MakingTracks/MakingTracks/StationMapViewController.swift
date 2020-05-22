@@ -37,7 +37,6 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         annotation.coordinate = Constants.LocationSearch.MelbourneCDB
         annotation.title = "Center"
         annotation.subtitle = "Subtitle"
-        
         mapView.addAnnotation(annotation)
         
         NetworkController.shared.getNearbyStops(near: Constants.LocationSearch.MelbourneCDB)
