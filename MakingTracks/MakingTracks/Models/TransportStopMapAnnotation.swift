@@ -24,6 +24,13 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
         self.stopID = stopID
         self.routeType = routeType
         self.coordinate = coordinate
+        
+        super.init()
+    }
+    
+    var title: String?
+    {
+        return name
     }
     
     static func decodeToArray(rawJSON: Any) throws -> [TransportStopMapAnnotation]?
@@ -46,7 +53,8 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
                 if let name = stop["stop_name"] as? String,
                    let suburb = stop["stop_suburb"] as? String,
                    let stopID = stop["stop_id"] as? Int,
-                   let routeType = stop["route_type"] as? TransportType,
+                   let routeTypeRaw = stop["route_type"] as? Int,
+                   let routeType = TransportType(rawValue: routeTypeRaw),
                    let lat = stop["stop_latitude"] as? Double,
                    let long = stop["stop_longitude"] as? Double
                 {

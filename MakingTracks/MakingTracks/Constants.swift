@@ -21,6 +21,13 @@ struct Constants
         
         ///Maximum distance from the Melbourne CBD (in meters) to cover the entire state of Victoria for 'nearby' search
         static let MaxDistanceForAllResults = 600000
+        
+        static let DefaultDistanceSearch = 3000
+    }
+    
+    struct APIEndPoints
+    {
+        static let StopsNearLocation = "https://timetableapi.ptv.vic.gov.au/v3/stops/location/"
     }
     
     
