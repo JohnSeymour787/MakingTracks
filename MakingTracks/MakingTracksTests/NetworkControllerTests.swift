@@ -7,9 +7,14 @@
 //
 
 import XCTest
+import MapKit
 @testable import MakingTracks
 
 class NetworkControllerTests: XCTestCase, NetworkControllerDelegate {
+    func addMapAnnotations(_ annotations: [MKAnnotation]) {
+        
+    }
+    
     
     //Expectation needed to test call to NetworkControllerDelegate method which is called in a callback
     private var healthCheckExpectation: XCTestExpectation?

@@ -14,13 +14,39 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wr-p5-goN" userLabel="mapKit">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for stop" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4W-Rd-5Hq" userLabel="searchTextField">
+                                <rect key="frame" x="57.5" y="44" width="299" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3xa-vQ-tXx"/>
+                                    <constraint firstAttribute="width" constant="299" id="ZjH-th-4Ly"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9Wr-p5-goN" secondAttribute="bottom" id="3AK-cf-a6N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Wr-p5-goN" secondAttribute="trailing" id="Mps-zW-qeE"/>
+                            <constraint firstItem="d4W-Rd-5Hq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wFJ-by-tc7"/>
+                            <constraint firstItem="9Wr-p5-goN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xj9-Ah-2qa"/>
+                            <constraint firstItem="d4W-Rd-5Hq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yky-AH-Azo"/>
+                            <constraint firstItem="9Wr-p5-goN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zAh-hh-ghS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="9Wr-p5-goN" id="khL-bd-qCY"/>
+                        <outlet property="searchTextField" destination="d4W-Rd-5Hq" id="Xjz-gh-FOn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

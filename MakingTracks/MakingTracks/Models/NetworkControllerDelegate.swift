@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import MapKit
 
 protocol NetworkControllerDelegate: class
 {
     func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
+    func addMapAnnotations(_ annotations: [MKAnnotation])
 }
