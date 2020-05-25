@@ -75,7 +75,7 @@ class NetworkController
             {
                 return
             }
-
+            
             if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
             {
                 if let stopsArray = TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
@@ -91,6 +91,7 @@ class NetworkController
         return []
     }
     
+    ///Standard URLSession.DataTask completion handler parameter values check. Ensures that no error, reponse is good HTTP and with MIME type of application/json, and that data is not nil
     private func standardParameterCheck(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Bool
     {
         if error != nil
