@@ -9,14 +9,13 @@
 import Foundation
 import CoreLocation
 
+///Singleton Class for all app API requests
 class NetworkController
 {
-    private static let healthCheckEndPoint = "https://timetableapi.ptv.vic.gov.au/v2/healthcheck"
+    //Singleton class
     static let shared = NetworkController()
-    
     private init()
     {
-        
     }
     
     var delegate: NetworkControllerDelegate?
@@ -31,34 +30,28 @@ class NetworkController
     
     public func APIhealthCheck() -> Bool
     {
-        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: NetworkController.healthCheckEndPoint) else
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: Constants.APIEndPoints.APIHealthCheck) else
         {
             return false
         }
 
-        let task = session.dataTask(with: url) { data, response, error in
-            if error != nil
-            {
-                print(error.debugDescription)
-                return
-            }
+        let task = session.dataTask(with: url)
+        {
+            data, response, error in
+        //  {
+                guard self.standardParameterCheck(data, response, error) else
+                {
+                    return
+                }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else
-            {
-                return
-            }
-            
-            if let mimeType = httpResponse.mimeType, mimeType == "application/json"
-            {
                 let decoder = JSONDecoder()
+            
                 if let APIHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
                 {
                     self.delegate?.PTVAPIStatusUpdate(healthCheck: APIHealth)
                     print(APIHealth.securityTokenOK)
                 }
-            }
-                
+        //  }
         }
         
         task.resume()
@@ -76,35 +69,47 @@ class NetworkController
             return []
         }
 
-        let task = session.dataTask(with: url) { data, response, error in
-            if error != nil
-            {
-                print(error.debugDescription)
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else
+        let task = session.dataTask(with: url)
+        {   data, response, error in
+            guard self.standardParameterCheck(data, response, error) else
             {
                 return
             }
-            
-            if let mimeType = httpResponse.mimeType, mimeType == "application/json"
+
+            if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
             {
-                if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                if let stopsArray = TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
                 {
-                    var myArray = try? TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
-                    
-                    self.delegate?.addMapAnnotations(myArray ?? [])
+                    self.delegate?.addMapAnnotations(stopsArray)
                 }
-                
             }
-                
         }
         
         task.resume()
         
         
         return []
+    }
+    
+    private func standardParameterCheck(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Bool
+    {
+        if error != nil
+        {
+            print(error.debugDescription)
+            return false
+        }
+        
+        if data == nil
+        {
+            return false
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse,        (200...299).contains(httpResponse.statusCode) else
+        {
+            return false
+        }
+        
+        //After all prior checks, must finally ensure that we are dealing with JSON data
+        return httpResponse.mimeType == "application/json"
     }
 }

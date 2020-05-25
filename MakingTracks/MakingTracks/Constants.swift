@@ -28,8 +28,13 @@ struct Constants
     
     struct APIEndPoints
     {
+        ///Base URL for a health check request to the API to test connection and signature key generation
+        static let APIHealthCheck = "https://timetableapi.ptv.vic.gov.au/v2/healthcheck"
+        
         ///Base URL for retrieving stops near a location. Requires latitude and longitude parameters, separated by a comma
         static let StopsNearLocation = "https://timetableapi.ptv.vic.gov.au/v3/stops/location/"
+        
+        
     }
     
     

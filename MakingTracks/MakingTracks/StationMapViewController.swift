@@ -11,7 +11,8 @@ import MapKit
 
 class StationMapViewController: UIViewController, NetworkControllerDelegate
 {
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel) {
+    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
+    {
         
     }
     
