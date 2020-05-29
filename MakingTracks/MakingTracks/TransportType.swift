@@ -2,9 +2,10 @@
 //  TransportType.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/15/20.
-//  Copyright © 2020 John. All rights reserved.
+//  Created by John on 5/15/20.
 //
+//  Purpose: Enumeration to represent the transport types provided by the PTV API and their
+//           corresponding raw values.
 
 import Foundation
 
