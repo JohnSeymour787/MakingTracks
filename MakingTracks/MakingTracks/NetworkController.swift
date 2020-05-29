@@ -10,7 +10,7 @@
 
 import Foundation
 import CoreLocation
-
+import UIKit
 ///Singleton Class for all app API requests
 class NetworkController
 {
@@ -170,6 +170,32 @@ class NetworkController
                 {
                     self.delegate?.dataDecodingComplete(departuresArray)
                 }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func updateDirectionName(for departureDetails: DepartureDetails, transportType: TransportType = .Train)
+    {
+        let APIURL = Constants.APIEndPoints.DirectionDetailsForRouteType + "\(departureDetails.directionID)/route_type/\(transportType)"
+        
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
+        {
+            return
+        }
+        
+        let task = session.dataTask(with: url)
+        {   data, response, error in
+            guard self.standardParameterCheck(data, response, error) else
+            {
+                return
+            }
+
+            if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+            {
+                departureDetails.updateDirectionNameFrom(rawJSON: jsonSerialised)
+                self.delegate?.dataDecodingComplete(["Done"])
             }
         }
         

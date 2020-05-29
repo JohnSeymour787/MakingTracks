@@ -15,6 +15,7 @@ class DepartureDetails
     //Maybe don't need this one
     var runID: Int?
     let directionID: Int
+    var directionString: String?
     
     let scheduledDepartureTime: Date
     let atPlatform: Bool
@@ -22,6 +23,7 @@ class DepartureDetails
     
     var calculatedRemainingTime: Int
     {
+        //Converting time difference in seconds to minutes
         return Int(scheduledDepartureTime.timeIntervalSinceNow / 60.0)
     }
     
@@ -67,21 +69,28 @@ class DepartureDetails
                 {
                     itemToAdd = DepartureDetails(stopID, routeID, directionID, platformNumber, atPlatform, utcTime)
                     
+                    
                     result.append(itemToAdd)
                 }
-
             }
         }
-        
         return result
     }
-}
-
-/*
-private extension Date
-{
-    func minutesFromNow() -> Int
+    
+    func updateDirectionNameFrom(rawJSON: Any)
     {
-        self.timeIntervalSinceNow
+        guard
+            let jsonOuterObject = rawJSON as? [String: Any],
+            let directionsArray = jsonOuterObject["directions"] as? [Any],
+            directionsArray.count >= 0
+        else
+        {
+            return
+        }
+        
+        if let firstElement = directionsArray.first as? [String: Any]
+        {
+            directionString = firstElement["direction_name"] as? String
+        }
     }
-}*/
+}

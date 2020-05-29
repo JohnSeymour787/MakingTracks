@@ -29,5 +29,6 @@ class DepartureDetailsCell: UITableViewCell
         platformNumberLabel.text = "Platform: \(details.platformNumber)"
         atPlatformLabel.text = "At platform: \(details.atPlatform ? "Yes" : "No")"
         remainingDepartureTimeLabel.text = "\(details.calculatedRemainingTime) minutes"
+        directionLabel.text = details.directionString
     }
 }
