@@ -24,8 +24,13 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
     }
     
-    func addMapAnnotations(_ annotations: [MKAnnotation])
+    func dataDecodingComplete(_ decodedData: [Any])
     {
+        guard let annotations = decodedData as? [MKAnnotation] else
+        {
+            return
+        }
+        
         DispatchQueue.main.async
         {
             self.mapView.addAnnotations(annotations)
@@ -161,6 +166,8 @@ extension StationMapViewController: MKMapViewDelegate
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
+        //let stopInfoController = StopInfoController()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         //Use the main view controller to instantiate the ScheduledServices scene from it

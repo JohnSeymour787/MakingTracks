@@ -9,11 +9,38 @@
 import Foundation
 import UIKit
 
-class StopInfoController: NSObject
+class StopInfoController: NSObject, NetworkControllerDelegate
 {
-    //departuresArray
+    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
+    {
+        
+    }
+    
+    func dataDecodingComplete(_ decodedData: [Any])
+    {
+        departuresArray = decodedData as? [DepartureDetails]
+        
+        if departuresArray != nil
+        {
+            delegate?.downloadComplete()
+        }
+    }
+    
+    override init()
+    {
+        super.init()
+        
+        
+    }
+    var delegate: UpdateTableDataDelegate?
+    var departuresArray: [DepartureDetails]?
     //stopDetails
     
+    func beginStopsDataRetrieval(stopID: Int)
+    {
+        NetworkController.shared.delegate = self
+        NetworkController.shared.getDeparturesFor(stopID: stopID)
+    }
     
 }
 
@@ -22,14 +49,17 @@ extension StopInfoController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        return departuresArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "departureDetailsCell", for: indexPath) as! DepartureDetailsCell
         
-        //cell.details()
+        if departuresArray != nil
+        {
+            cell.setLabels(details: departuresArray![indexPath.row])
+        }
         
         return cell
     }

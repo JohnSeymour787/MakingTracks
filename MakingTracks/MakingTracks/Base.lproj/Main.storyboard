@@ -181,6 +181,7 @@
                     <navigationItem key="navigationItem" id="PIe-hV-qYK"/>
                     <connections>
                         <outlet property="stopNameLabel" destination="HeL-1B-M5D" id="97A-3c-AhW"/>
+                        <outlet property="tableView" destination="Qka-iM-rTp" id="yOi-Pc-hsb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDg-dI-XyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

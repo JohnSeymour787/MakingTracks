@@ -8,21 +8,35 @@
 
 import UIKit
 
-class ScheduledServicesViewController: UIViewController
+class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
 {
+    func downloadComplete()
+    {
+        DispatchQueue.main.async
+        {
+            self.tableView.reloadData()
+        }
+    }
+    
     var stopID: Int?
     var stopName: String = ""
     var transportType: TransportType?
+    let controller = StopInfoController()
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stopNameLabel: UILabel!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        tableView.dataSource = controller.self
+        
         //Set view title label text
         stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
         stopNameLabel.text! += "\(stopID)"
+        controller.delegate = self
+        controller.beginStopsDataRetrieval(stopID: stopID!)
     }
 
     

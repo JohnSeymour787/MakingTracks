@@ -26,7 +26,8 @@ class DepartureDetailsCell: UITableViewCell
     
     func setLabels(details: DepartureDetails)
     {
-        platformNumberLabel.text = "Platform: \(details.platformNumber!)"
-        atPlatformLabel.text = "At platform: \(details.atPlatform! ? "Yes" : "No")"
+        platformNumberLabel.text = "Platform: \(details.platformNumber)"
+        atPlatformLabel.text = "At platform: \(details.atPlatform ? "Yes" : "No")"
+        remainingDepartureTimeLabel.text = "\(details.calculatedRemainingTime) minutes"
     }
 }

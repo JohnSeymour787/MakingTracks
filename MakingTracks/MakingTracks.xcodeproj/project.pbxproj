@@ -31,6 +31,7 @@
 		B9F1D8922481330800326E27 /* StopInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D8912481330800326E27 /* StopInfoController.swift */; };
 		B9F1D8942481372500326E27 /* DepartureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D8932481372500326E27 /* DepartureDetails.swift */; };
 		B9F1D89624813CAF00326E27 /* DepartureDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */; };
+		B9F1D89824814E2D00326E27 /* UpdateTableDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D89724814E2D00326E27 /* UpdateTableDataDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		B9F1D8912481330800326E27 /* StopInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopInfoController.swift; sourceTree = "<group>"; };
 		B9F1D8932481372500326E27 /* DepartureDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureDetails.swift; sourceTree = "<group>"; };
 		B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureDetailsCell.swift; sourceTree = "<group>"; };
+		B9F1D89724814E2D00326E27 /* UpdateTableDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableDataDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */,
 				B9F1D8932481372500326E27 /* DepartureDetails.swift */,
 				B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */,
+				B9F1D89724814E2D00326E27 /* UpdateTableDataDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */,
 				B9E27C1824808D3B000DE575 /* LocationController.swift in Sources */,
 				B9F1D8922481330800326E27 /* StopInfoController.swift in Sources */,
+				B9F1D89824814E2D00326E27 /* UpdateTableDataDelegate.swift in Sources */,
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
 				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
 				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
