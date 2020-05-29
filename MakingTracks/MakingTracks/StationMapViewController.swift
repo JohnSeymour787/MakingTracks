@@ -161,9 +161,11 @@ extension StationMapViewController: MKMapViewDelegate
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
-        //Transition here to scheduled services screen
-        //Either with segue to another screen
-        //Or, make a view that comes up when tapped, see the linkedin vid about mapkit
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController = storyboard.instantiateViewController(identifier: "ScheduledServicesScreen")
+        
+        present(viewController, animated: true, completion: nil)
     }
     
 }
