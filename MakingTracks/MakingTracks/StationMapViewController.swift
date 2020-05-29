@@ -24,8 +24,13 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
     }
     
-    func addMapAnnotations(_ annotations: [MKAnnotation])
+    func dataDecodingComplete(_ decodedData: [Any])
     {
+        guard let annotations = decodedData as? [MKAnnotation] else
+        {
+            return
+        }
+        
         DispatchQueue.main.async
         {
             self.mapView.addAnnotations(annotations)
@@ -161,9 +166,22 @@ extension StationMapViewController: MKMapViewDelegate
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
-        //Transition here to scheduled services screen
-        //Either with segue to another screen
-        //Or, make a view that comes up when tapped, see the linkedin vid about mapkit
+        //let stopInfoController = StopInfoController()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Use the main view controller to instantiate the ScheduledServices scene from it
+        let viewController = storyboard.instantiateViewController(identifier: "ScheduledServicesScreen") as! ScheduledServicesViewController
+        
+        //If this is a transport annotation that had its callout pressed
+        if let stopAnnotation = view.annotation as? TransportStopMapAnnotation
+        {
+            //Set the viewController's properties and present it in full-screen view
+            viewController.stopID = stopAnnotation.stopID
+            viewController.transportType = stopAnnotation.routeType
+            viewController.stopName = stopAnnotation.name
+            
+            present(viewController, animated: true, completion: nil)
+        }
     }
-    
 }

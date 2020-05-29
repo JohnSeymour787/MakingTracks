@@ -78,7 +78,7 @@ class NetworkController
             {
                 if let stopsArray = TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
                 {
-                    self.delegate?.addMapAnnotations(stopsArray)
+                    self.delegate?.dataDecodingComplete(stopsArray)
                 }
             }
         }
@@ -146,5 +146,33 @@ class NetworkController
         {
             task.resume()
         }
+    }
+    
+    func getDeparturesFor(stopID: Int, routeType: TransportType = .Train)
+    {
+        let APIURL = Constants.APIEndPoints.DeparturesFromStop + "route_type/\(routeType)/stop/\(stopID)?max_results=1"
+        
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
+        {
+            return
+        }
+        
+        let task = session.dataTask(with: url)
+        {   data, response, error in
+            guard self.standardParameterCheck(data, response, error) else
+            {
+                return
+            }
+            
+            if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+            {
+                if let departuresArray = DepartureDetails.decodeToArray(rawJSON: jsonSerialised)
+                {
+                    self.delegate?.dataDecodingComplete(departuresArray)
+                }
+            }
+        }
+        
+        task.resume()
     }
 }
