@@ -107,10 +107,10 @@ class NetworkController
             
                 let decoder = JSONDecoder()
             
+                //Converting to the Decodable-conforming PTVAPIHealthCheckModel class
                 if let APIHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
                 {
                     self.delegate?.PTVAPIStatusUpdate(healthCheck: APIHealth)
-                    print(APIHealth.securityTokenOK)
                 }
         //  }
         }
