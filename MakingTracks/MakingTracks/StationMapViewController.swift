@@ -163,9 +163,18 @@ extension StationMapViewController: MKMapViewDelegate
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let viewController = storyboard.instantiateViewController(identifier: "ScheduledServicesScreen")
+        //Use the main view controller to instantiate the ScheduledServices scene from it
+        let viewController = storyboard.instantiateViewController(identifier: "ScheduledServicesScreen") as! ScheduledServicesViewController
         
-        present(viewController, animated: true, completion: nil)
+        //If this is a transport annotation that had its callout pressed
+        if let stopAnnotation = view.annotation as? TransportStopMapAnnotation
+        {
+            //Set the viewController's properties and present it in full-screen view
+            viewController.stopID = stopAnnotation.stopID
+            viewController.transportType = stopAnnotation.routeType
+            viewController.stopName = stopAnnotation.name
+            
+            present(viewController, animated: true, completion: nil)
+        }
     }
-    
 }

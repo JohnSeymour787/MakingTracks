@@ -2,7 +2,7 @@
 //  ScheduledServicesViewController.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/29/20.
+//  Created by John on 5/29/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
@@ -10,15 +10,27 @@ import UIKit
 
 class ScheduledServicesViewController: UIViewController
 {
-
+    var stopID: Int?
+    var stopName: String = ""
+    var transportType: TransportType?
+    
+    @IBOutlet weak var stopNameLabel: UILabel!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        //Set view title label text
+        stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
         // Do any additional setup after loading the view.
     }
 
-
+    
+    @IBAction func backToMapButton()
+    {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

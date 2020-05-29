@@ -110,7 +110,6 @@ class NetworkController
                 if let APIHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
                 {
                     self.delegate?.PTVAPIStatusUpdate(healthCheck: APIHealth)
-                    print(APIHealth.securityTokenOK)
                 }
         //  }
         }
