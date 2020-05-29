@@ -22,7 +22,6 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         {
             self.mapView.addAnnotations(annotations)
         }
-        
     }
     
     @IBOutlet weak var searchTextField: UITextField!
@@ -30,10 +29,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        
-        
-        NetworkController.shared.APIhealthCheck()
+    
         NetworkController.shared.delegate = self
         mapView.delegate = self
         searchTextField.delegate = self
@@ -41,9 +37,12 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         //Registering the MKAnnotationView class to be the default annotation view used
         mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
+        NetworkController.shared.APIhealthCheck()
+        
         //Getting all Metro Trains stops, will call addMapAnnotations() delegate method of this class when done
         NetworkController.shared.getAllStops()
         
+        //V******Maybe need to do this in view will appear ****************
         mapView.setUserTrackingMode(.follow, animated: true)
     }
     
