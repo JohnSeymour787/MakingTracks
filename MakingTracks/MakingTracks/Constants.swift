@@ -33,6 +33,8 @@ struct Constants
         static let StopsNearLocation = "https://timetableapi.ptv.vic.gov.au/v3/stops/location/"
         
         static let DeparturesFromStop = "https://timetableapi.ptv.vic.gov.au/v3/departures/"
+        
+        static let DirectionDetailsForRouteType = "https://timetableapi.ptv.vic.gov.au/v3/directions/"
     }
     
     struct MapViewConstants

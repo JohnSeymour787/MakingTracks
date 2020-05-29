@@ -34,7 +34,7 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         
         //Set view title label text
         stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
-        stopNameLabel.text! += "\(stopID)"
+        
         controller.delegate = self
         controller.beginStopsDataRetrieval(stopID: stopID!)
     }

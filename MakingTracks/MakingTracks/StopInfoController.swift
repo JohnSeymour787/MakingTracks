@@ -11,6 +11,8 @@ import UIKit
 
 class StopInfoController: NSObject, NetworkControllerDelegate
 {
+    private var completedDirectionUpdates = 0
+    
     func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
     {
         
@@ -18,11 +20,33 @@ class StopInfoController: NSObject, NetworkControllerDelegate
     
     func dataDecodingComplete(_ decodedData: [Any])
     {
-        departuresArray = decodedData as? [DepartureDetails]
-        
-        if departuresArray != nil
+        //If the NetworkController calls this delegate method with a single String element, then one of the departure elements in the array has had its name updated
+        if ((decodedData.first as? String) != nil)
         {
-            delegate?.downloadComplete()
+            completedDirectionUpdates += 1
+            
+            if completedDirectionUpdates == departuresArray?.count
+            {
+                //Tell the ScheduledServicesViewController to reload its table data
+                delegate?.downloadComplete()
+                
+                //Don't expect any more calls to this if block anymore
+                completedDirectionUpdates = 0
+            }
+            
+            return
+        }
+        
+        departuresArray = decodedData as? [DepartureDetails]
+
+        guard departuresArray != nil else
+        {
+            return
+        }
+        
+        for departure in departuresArray!
+        {
+            NetworkController.shared.updateDirectionName(for: departure)
         }
     }
     
