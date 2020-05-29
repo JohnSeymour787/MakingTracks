@@ -60,17 +60,30 @@ class NetworkController
         return true
     }
     
-    //UPDATE RETURN TYPE
-    func getNearbyStops(near coordinate: CoreLocation.CLLocationCoordinate2D, transportType: TransportType = .Train) -> [TransportStopMapAnnotation]
+    func getAllStops(transportType: TransportType = .Train)
     {
-        let APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)&max_distance=\(Constants.LocationSearch.DefaultDistanceSearch)"
+        let coordinate = Constants.LocationConstants.MelbourneCDB
         
-        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
+        var APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)"
+        
+        APIURL += "&max_results=\(Constants.LocationSearch.MaxForAllPossibleResults)"
+        
+        APIURL += "&max_distance=\(Constants.LocationSearch.MaxDistanceForAllResults)"
+        
+        if let task = dataTaskForAPIStops(urlString: APIURL)
         {
-            return []
+            task.resume()
         }
-
-        let task = session.dataTask(with: url)
+    }
+    
+    private func dataTaskForAPIStops(urlString: String) -> URLSessionDataTask?
+    {
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: urlString) else
+        {
+            return nil
+        }
+        
+        let result = session.dataTask(with: url)
         {   data, response, error in
             guard self.standardParameterCheck(data, response, error) else
             {
@@ -86,8 +99,19 @@ class NetworkController
             }
         }
         
-        task.resume()
+        return result
+    }
+    
+    //UPDATE RETURN TYPE
+    func getStops( near coordinate: CLLocationCoordinate2D, transportType: TransportType = .Train) -> [TransportStopMapAnnotation]
+    {
+        let APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)&max_distance=\(Constants.LocationSearch.DefaultDistanceSearch)"
         
+
+        if let task = dataTaskForAPIStops(urlString: APIURL)
+        {
+            task.resume()
+        }
         
         return []
     }
@@ -113,5 +137,13 @@ class NetworkController
         
         //After all prior checks, must finally ensure that we are dealing with JSON data
         return httpResponse.mimeType == "application/json"
+    }
+}
+
+extension CLLocationCoordinate2D
+{
+    static func === (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool
+    {
+        return lhs as AnyObject === rhs as AnyObject
     }
 }

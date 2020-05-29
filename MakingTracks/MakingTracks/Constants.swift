@@ -13,9 +13,6 @@ struct Constants
 {
     struct LocationSearch
     {
-        ///CLLocationCoordinate2D value for precisely the center of Melbourne
-        static let MelbourneCDB = CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631)
-        
         ///Maximum expected stops possible for a single transport type across the state
         static let MaxForAllPossibleResults = 1000
         
@@ -36,6 +33,17 @@ struct Constants
         
         
     }
+    
+    struct LocationConstants
+    {
+        ///CLLocationCoordinate2D value for precisely the center of Melbourne
+        static let MelbourneCDB = CLLocationCoordinate2D(latitude: -37.8136, longitude: 144.9631)
+        
+        static let DefaultDistanceFilter = 10.0
+        
+        static let DesiredAccuracy = 50.0
+    }
+        
     
     
 }

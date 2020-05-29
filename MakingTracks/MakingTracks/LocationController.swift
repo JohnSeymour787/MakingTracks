@@ -19,7 +19,9 @@ class LocationController: NSObject, CLLocationManagerDelegate
         locationManager.delegate = self
     }
     
+    var delegate: LocationControllerDelegate?
     private let locationManager = CLLocationManager()
+    private var userIsMoving = true
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
             //
@@ -67,26 +69,52 @@ class LocationController: NSObject, CLLocationManagerDelegate
             //Check for location hardware support
             if CLLocationManager.locationServicesEnabled()
             {
-                locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-                locationManager.startUpdatingLocation()
+                locationManager.activityType = .fitness
+                locationManager.allowsBackgroundLocationUpdates = false
+                locationManager.distanceFilter = Constants.LocationConstants.DefaultDistanceFilter
+                setUpdateRateWhenMoving()
             }
             
         }
+    
+    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager)
+    {
+        userIsMoving = false
+        locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.startUpdatingLocation()
+    }
         
-        func stopLocationServices()
+    private func setUpdateRateWhenMoving()
+    {
+        userIsMoving = true
+        locationManager.pausesLocationUpdatesAutomatically = true
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.startUpdatingLocation()
+    }
+
+        
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last!
+        let accuracy = location.horizontalAccuracy
+        if accuracy < 0 || accuracy > Constants.LocationConstants.DesiredAccuracy
+        {
+            return
+        }
+
+        if !userIsMoving
         {
             locationManager.stopUpdatingLocation()
+            setUpdateRateWhenMoving()
         }
-        
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            let location = locations.last!
-            let coordinate = location.coordinate
-        
-            NetworkController.shared.getNearbyStops(near: coordinate)
-            mapView.camera.centerCoordinate = coordinate
+    
             
-            //mapView.camera = mapView.camera
-            
-        }
+    }
+    
+    func stopLocationServices()
+    {
+        locationManager.stopUpdatingLocation()
+    }
     
 }

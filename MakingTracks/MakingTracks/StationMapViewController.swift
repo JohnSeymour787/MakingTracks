@@ -38,17 +38,16 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate, Loc
         updateMapRegion(range: 100)
         NetworkController.shared.delegate = self
         NetworkController.shared.APIhealthCheck()
+        LocationController.shared.delegate = self
         //mapView.set
         mapView.delegate = self
         searchTextField.delegate = self
         mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = Constants.LocationSearch.MelbourneCDB
-        annotation.title = "Center"
-        annotation.subtitle = "Subtitle"
-        mapView.addAnnotation(annotation)
-        locationManager.delegate = self
-        NetworkController.shared.getNearbyStops(near: Constants.LocationSearch.MelbourneCDB)
+
+        //NetworkController.shared.getStops(near: Constants.LocationConstants.MelbourneCDB)
+
+        NetworkController.shared.getAllStops()
+        
         mapView.setUserTrackingMode(.follow, animated: true)
     }
     
@@ -64,22 +63,15 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate, Loc
 
     func updateMapRegion(range: CLLocationDistance)
     {
-        let region = MKCoordinateRegion(center: Constants.LocationSearch.MelbourneCDB, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        let camera = MKMapCamera(lookingAtCenter: Constants.LocationSearch.MelbourneCDB, fromDistance: 5000, pitch: 0, heading: 0)
+        let region = MKCoordinateRegion(center: Constants.LocationConstants.MelbourneCDB, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        let camera = MKMapCamera(lookingAtCenter: Constants.LocationConstants.MelbourneCDB, fromDistance: 5000, pitch: 0, heading: 0)
         mapView.camera = camera
         //mapView.region = region
         
         
     }
-    
-    
-private var locationManager = CLLocationManager()
 }
 
-extension StationMapViewController: CLLocationManagerDelegate
-{
-   
-}
 
 extension StationMapViewController: UITextFieldDelegate
 {
