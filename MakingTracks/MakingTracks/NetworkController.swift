@@ -28,12 +28,12 @@ class NetworkController
         return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
     }()
     
-    //*UPDATE RETURN TYPE*
-    public func APIhealthCheck() -> Bool
+    //
+    public func APIhealthCheck()
     {
         guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: Constants.APIEndPoints.APIHealthCheck) else
         {
-            return false
+            return
         }
 
         let task = session.dataTask(with: url)
@@ -56,8 +56,6 @@ class NetworkController
         }
         
         task.resume()
-        
-        return true
     }
     
     func getAllStops(transportType: TransportType = .Train)
@@ -102,8 +100,8 @@ class NetworkController
         return result
     }
     
-    //UPDATE RETURN TYPE
-    func getStops( near coordinate: CLLocationCoordinate2D, transportType: TransportType = .Train) -> [TransportStopMapAnnotation]
+    //
+    func getStops( near coordinate: CLLocationCoordinate2D, transportType: TransportType = .Train)
     {
         let APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)&max_distance=\(Constants.LocationSearch.DefaultDistanceSearch)"
         
@@ -112,8 +110,6 @@ class NetworkController
         {
             task.resume()
         }
-        
-        return []
     }
     
     ///Standard URLSession.DataTask completion handler parameter values check. Ensures that no error, reponse is good HTTP and with MIME type of application/json, and that data is not nil
@@ -137,13 +133,5 @@ class NetworkController
         
         //After all prior checks, must finally ensure that we are dealing with JSON data
         return httpResponse.mimeType == "application/json"
-    }
-}
-
-extension CLLocationCoordinate2D
-{
-    static func === (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool
-    {
-        return lhs as AnyObject === rhs as AnyObject
     }
 }

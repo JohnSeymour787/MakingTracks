@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 struct Constants
 {
@@ -32,6 +33,11 @@ struct Constants
         static let StopsNearLocation = "https://timetableapi.ptv.vic.gov.au/v3/stops/location/"
         
         
+    }
+    
+    struct MapViewConstants
+    {
+        static let DefaultCamera = MKMapCamera(lookingAtCenter: LocationConstants.MelbourneCDB, fromDistance: 5000, pitch: 0, heading: 0)
     }
     
     struct LocationConstants

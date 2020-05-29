@@ -23,9 +23,10 @@ class LocationController: NSObject, CLLocationManagerDelegate
     private let locationManager = CLLocationManager()
     private var userIsMoving = true
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            //
-        }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        print(error.localizedDescription)
+    }
         
     func prepareLocationServices()
     {
