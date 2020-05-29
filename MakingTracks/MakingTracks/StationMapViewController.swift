@@ -2,9 +2,17 @@
 //  ViewController.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/15/20.
+//  Created by John on 5/15/20.
 //  Copyright © 2020 John. All rights reserved.
 //
+/*
+    TODO:
+    -Implementation for PTVAPIStatusUpdate method
+        -Should have a popup if the healthcheck fails (do in main queue)
+    -textFieldShouldReturn() delegate method should start a segue to the search screen, passing it the text in the textfield
+    -Remove old MapViewDelegate commented function's code
+    -Update calloutAccessoryTapped method to open Scheduled Services screen
+ */
 
 import UIKit
 import MapKit
