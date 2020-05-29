@@ -25,6 +25,8 @@
 		B9B93E97246F8CA6007F4E10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E96246F8CA6007F4E10 /* Constants.swift */; };
 		B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E98246F9069007F4E10 /* TransportType.swift */; };
 		B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E9A246F9169007F4E10 /* NetworkController.swift */; };
+		B9E27C1824808D3B000DE575 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27C1724808D3B000DE575 /* LocationController.swift */; };
+		B9E27C1A248093AC000DE575 /* LocationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		B9B93E96246F8CA6007F4E10 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9B93E98246F9069007F4E10 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		B9B93E9A246F9169007F4E10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		B9E27C1724808D3B000DE575 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */,
 				B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */,
 				B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */,
+				B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,7 +150,6 @@
 				B9B336EE24778B2300063EDE /* Models */,
 				B9B93E91246F7C35007F4E10 /* ObjectiveC */,
 				B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */,
-				B9B93E65246F6F5C007F4E10 /* StationMapViewController.swift */,
 				B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */,
 				B9B93E67246F6F5C007F4E10 /* Main.storyboard */,
 				B9B93E6A246F6F5D007F4E10 /* Assets.xcassets */,
@@ -153,7 +157,9 @@
 				B9B93E6F246F6F5D007F4E10 /* Info.plist */,
 				B9B93E96246F8CA6007F4E10 /* Constants.swift */,
 				B9B93E98246F9069007F4E10 /* TransportType.swift */,
+				B9B93E65246F6F5C007F4E10 /* StationMapViewController.swift */,
 				B9B93E9A246F9169007F4E10 /* NetworkController.swift */,
+				B9E27C1724808D3B000DE575 /* LocationController.swift */,
 			);
 			path = MakingTracks;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				B9B93E97246F8CA6007F4E10 /* Constants.swift in Sources */,
 				B9B93E66246F6F5C007F4E10 /* StationMapViewController.swift in Sources */,
 				B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */,
+				B9E27C1824808D3B000DE575 /* LocationController.swift in Sources */,
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
 				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
 				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
@@ -330,6 +337,7 @@
 				B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */,
 				B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */,
 				B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */,
+				B9E27C1A248093AC000DE575 /* LocationControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

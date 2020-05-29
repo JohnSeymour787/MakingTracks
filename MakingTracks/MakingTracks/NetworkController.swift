@@ -28,6 +28,7 @@ class NetworkController
         return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
     }()
     
+    //*UPDATE RETURN TYPE*
     public func APIhealthCheck() -> Bool
     {
         guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: Constants.APIEndPoints.APIHealthCheck) else
