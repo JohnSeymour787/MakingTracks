@@ -9,14 +9,13 @@
 import Foundation
 import CoreLocation
 
+///Singleton Class for all app API requests
 class NetworkController
 {
-    private static let healthCheckEndPoint = "https://timetableapi.ptv.vic.gov.au/v2/healthcheck"
+    //Singleton class
     static let shared = NetworkController()
-    
     private init()
     {
-        
     }
     
     var delegate: NetworkControllerDelegate?
@@ -29,82 +28,110 @@ class NetworkController
         return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
     }()
     
-    public func APIhealthCheck() -> Bool
+    //
+    public func APIhealthCheck()
     {
-        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: NetworkController.healthCheckEndPoint) else
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: Constants.APIEndPoints.APIHealthCheck) else
         {
-            return false
+            return
         }
 
-        let task = session.dataTask(with: url) { data, response, error in
-            if error != nil
-            {
-                print(error.debugDescription)
-                return
-            }
+        let task = session.dataTask(with: url)
+        {
+            data, response, error in
+        //  {
+                guard self.standardParameterCheck(data, response, error) else
+                {
+                    return
+                }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else
-            {
-                return
-            }
-            
-            if let mimeType = httpResponse.mimeType, mimeType == "application/json"
-            {
                 let decoder = JSONDecoder()
+            
                 if let APIHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
                 {
                     self.delegate?.PTVAPIStatusUpdate(healthCheck: APIHealth)
                     print(APIHealth.securityTokenOK)
                 }
-            }
-                
+        //  }
         }
         
         task.resume()
-        
-        return true
     }
     
-    //UPDATE RETURN TYPE
-    func getNearbyStops(near coordinate: CoreLocation.CLLocationCoordinate2D, transportType: TransportType = .Train) -> [TransportStopMapAnnotation]
+    func getAllStops(transportType: TransportType = .Train)
+    {
+        let coordinate = Constants.LocationConstants.MelbourneCDB
+        
+        var APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)"
+        
+        APIURL += "&max_results=\(Constants.LocationSearch.MaxForAllPossibleResults)"
+        
+        APIURL += "&max_distance=\(Constants.LocationSearch.MaxDistanceForAllResults)"
+        
+        if let task = dataTaskForAPIStops(urlString: APIURL)
+        {
+            task.resume()
+        }
+    }
+    
+    private func dataTaskForAPIStops(urlString: String) -> URLSessionDataTask?
+    {
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: urlString) else
+        {
+            return nil
+        }
+        
+        let result = session.dataTask(with: url)
+        {   data, response, error in
+            guard self.standardParameterCheck(data, response, error) else
+            {
+                return
+            }
+            
+            if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+            {
+                if let stopsArray = TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
+                {
+                    self.delegate?.addMapAnnotations(stopsArray)
+                }
+            }
+        }
+        
+        return result
+    }
+    
+    //
+    func getStops( near coordinate: CLLocationCoordinate2D, transportType: TransportType = .Train)
     {
         let APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)&max_distance=\(Constants.LocationSearch.DefaultDistanceSearch)"
         
-        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
-        {
-            return []
-        }
 
-        let task = session.dataTask(with: url) { data, response, error in
-            if error != nil
-            {
-                print(error.debugDescription)
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else
-            {
-                return
-            }
-            
-            if let mimeType = httpResponse.mimeType, mimeType == "application/json"
-            {
-                if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                {
-                    var myArray = try? TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
-                    
-                    self.delegate?.addMapAnnotations(myArray ?? [])
-                }
-                
-            }
-                
+        if let task = dataTaskForAPIStops(urlString: APIURL)
+        {
+            task.resume()
+        }
+    }
+    
+    ///Standard URLSession.DataTask completion handler parameter values check. Ensures that no error, reponse is good HTTP and with MIME type of application/json, and that data is not nil
+    private func standardParameterCheck(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Bool
+    {
+        if error != nil
+        {
+            print(error.debugDescription)
+            return false
         }
         
-        task.resume()
+        if data == nil
+        {
+            return false
+        }
         
+        guard let httpResponse = response as? HTTPURLResponse,        (200...299).contains(httpResponse.statusCode) else
+        {
+            return false
+        }
         
-        return []
+        //After all prior checks, must finally ensure that we are dealing with JSON data
+        return httpResponse.mimeType == "application/json"
     }
 }

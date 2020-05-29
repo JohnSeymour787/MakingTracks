@@ -11,11 +11,13 @@ import MapKit
 
 class StationMapViewController: UIViewController, NetworkControllerDelegate
 {
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel) {
+    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
+    {
         
     }
     
-    func addMapAnnotations(_ annotations: [MKAnnotation]) {
+    func addMapAnnotations(_ annotations: [MKAnnotation])
+    {
         DispatchQueue.main.async
         {
             self.mapView.addAnnotations(annotations)
@@ -28,33 +30,39 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        updateMapRegion(range: 100)
-        NetworkController.shared.delegate = self
+
+        
+        
         NetworkController.shared.APIhealthCheck()
+        NetworkController.shared.delegate = self
         mapView.delegate = self
         searchTextField.delegate = self
+        
+        //Registering the MKAnnotationView class to be the default annotation view used
         mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = Constants.LocationSearch.MelbourneCDB
-        annotation.title = "Center"
-        annotation.subtitle = "Subtitle"
-        mapView.addAnnotation(annotation)
         
-        NetworkController.shared.getNearbyStops(near: Constants.LocationSearch.MelbourneCDB)
+        //Getting all Metro Trains stops, will call addMapAnnotations() delegate method of this class when done
+        NetworkController.shared.getAllStops()
+        
+        mapView.setUserTrackingMode(.follow, animated: true)
     }
-
-    func updateMapRegion(range: CLLocationDistance)
+    
+    override func viewWillAppear(_ animated: Bool)
     {
-        let region = MKCoordinateRegion(center: Constants.LocationSearch.MelbourneCDB, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        let camera = MKMapCamera(lookingAtCenter: Constants.LocationSearch.MelbourneCDB, fromDistance: 5000, pitch: 0, heading: 0)
-        mapView.camera = camera
-        //mapView.region = region
+        super.viewWillAppear(animated)
         
-        
+        mapView.camera = Constants.MapViewConstants.DefaultCamera
+        LocationController.shared.prepareLocationServices()
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+        LocationController.shared.stopLocationServices()
+    }
 }
+
 
 extension StationMapViewController: UITextFieldDelegate
 {

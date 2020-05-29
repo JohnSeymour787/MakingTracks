@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PTVAPIHealthCheckModel : Codable
+struct PTVAPIHealthCheckModel : Decodable
 {
     let securityTokenOK: Bool
     let clientClockOK: Bool

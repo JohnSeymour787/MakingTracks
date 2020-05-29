@@ -35,7 +35,7 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
     }
     
     
-    ///Takes a serialised raw JSON 'Any' object and attempts to convert to an array of class instances
+    ///Takes a serialised raw JSON 'Any' object and attempts to convert to an array of class instances. Returns nil if cannot find stops JSON array or returns empty array if cannot find stops. Otherwise, returns array of class instances.
     static func decodeToArray(rawJSON: Any) -> [TransportStopMapAnnotation]?
     {
         //Need to get the inner "stops" array from the JSON server response
