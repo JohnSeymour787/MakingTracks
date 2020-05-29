@@ -22,7 +22,7 @@ class ScheduledServicesViewController: UIViewController
 
         //Set view title label text
         stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
-        // Do any additional setup after loading the view.
+        stopNameLabel.text! += "\(stopID)"
     }
 
     

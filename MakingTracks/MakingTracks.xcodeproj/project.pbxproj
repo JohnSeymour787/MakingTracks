@@ -28,6 +28,9 @@
 		B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E9A246F9169007F4E10 /* NetworkController.swift */; };
 		B9E27C1824808D3B000DE575 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27C1724808D3B000DE575 /* LocationController.swift */; };
 		B9E27C1A248093AC000DE575 /* LocationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */; };
+		B9F1D8922481330800326E27 /* StopInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D8912481330800326E27 /* StopInfoController.swift */; };
+		B9F1D8942481372500326E27 /* DepartureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D8932481372500326E27 /* DepartureDetails.swift */; };
+		B9F1D89624813CAF00326E27 /* DepartureDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		B9B93E9A246F9169007F4E10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		B9E27C1724808D3B000DE575 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControllerDelegate.swift; sourceTree = "<group>"; };
+		B9F1D8912481330800326E27 /* StopInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopInfoController.swift; sourceTree = "<group>"; };
+		B9F1D8932481372500326E27 /* DepartureDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureDetails.swift; sourceTree = "<group>"; };
+		B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureDetailsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,8 @@
 				B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */,
 				B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */,
 				B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */,
+				B9F1D8932481372500326E27 /* DepartureDetails.swift */,
+				B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 				B9B93E9A246F9169007F4E10 /* NetworkController.swift */,
 				B9E27C1724808D3B000DE575 /* LocationController.swift */,
 				B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */,
+				B9F1D8912481330800326E27 /* StopInfoController.swift */,
 			);
 			path = MakingTracks;
 			sourceTree = "<group>";
@@ -339,12 +348,15 @@
 				B9A8F658246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift in Sources */,
 				B9B93E97246F8CA6007F4E10 /* Constants.swift in Sources */,
 				B9B93E66246F6F5C007F4E10 /* StationMapViewController.swift in Sources */,
+				B9F1D8942481372500326E27 /* DepartureDetails.swift in Sources */,
 				B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */,
 				B9E27C1824808D3B000DE575 /* LocationController.swift in Sources */,
+				B9F1D8922481330800326E27 /* StopInfoController.swift in Sources */,
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
 				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
 				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
 				B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */,
+				B9F1D89624813CAF00326E27 /* DepartureDetailsCell.swift in Sources */,
 				B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */,
 				B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */,
 				B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */,
