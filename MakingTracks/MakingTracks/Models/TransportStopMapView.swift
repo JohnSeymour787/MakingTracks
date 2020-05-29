@@ -35,7 +35,6 @@ class TransportStopMapView: MKAnnotationView
             timetableButton.setBackgroundImage(UIImage(named: "TimetableIcon"), for: .normal)
             rightCalloutAccessoryView = timetableButton
             image = UIImage(named: "MetroStationIcon")
-
         }
     }
 }

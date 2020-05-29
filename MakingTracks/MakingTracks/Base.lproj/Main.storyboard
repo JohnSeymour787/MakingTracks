@@ -40,7 +40,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="9Wr-p5-goN" id="khL-bd-qCY"/>
+                        <outlet property="mapView" destination="9Wr-p5-goN" id="vdE-UT-h60"/>
                         <outlet property="searchTextField" destination="d4W-Rd-5Hq" id="Xjz-gh-FOn"/>
                     </connections>
                 </viewController>
