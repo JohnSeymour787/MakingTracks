@@ -69,19 +69,9 @@ class DepartureDetails
                     
                     result.append(itemToAdd)
                 }
-
             }
         }
         
         return result
     }
 }
-
-/*
-private extension Date
-{
-    func minutesFromNow() -> Int
-    {
-        self.timeIntervalSinceNow
-    }
-}*/

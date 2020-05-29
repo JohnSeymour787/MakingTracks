@@ -49,21 +49,19 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
         //Registering the MKAnnotationView class to be the default annotation view used
         mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.camera = Constants.MapViewConstants.DefaultCamera
+        mapView.setUserTrackingMode(.follow, animated: true)
         
         NetworkController.shared.APIhealthCheck()
         
         //Getting all Metro Trains stops, will call addMapAnnotations() delegate method of this class when done
         NetworkController.shared.getAllStops()
-        
-        //V******Maybe need to do this in view will appear ****************
-        mapView.setUserTrackingMode(.follow, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
-        mapView.camera = Constants.MapViewConstants.DefaultCamera
         LocationController.shared.prepareLocationServices()
     }
     
