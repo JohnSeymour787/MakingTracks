@@ -17,14 +17,14 @@ class StationDetails
     let operatingHours: String?
     let phoneNumber: String?
     let lostPropertyNumber: String?
-    let mykiMachine: Bool?
+    let mykiMachine: Bool
     let stationDescription: String?
-    let stairs: Bool?
-    let elevatorAvailable: Bool?
-    let vlineTickets: Bool?
-    let toilet: Bool?
+    let stairs: Bool
+    let elevatorAvailable: Bool
+    let vlineTickets: Bool
+    let toilet: Bool
     
-    private init(_ stopID: Int, _ routeType: TransportType, _ stopName: String, _ stationDescription: String?, _ operatingHours: String?, _ phoneNumber: String?, _ lostPropertyNumber: String?, _ mykiZone: String?, _ mykiMachine: Bool?, _ vlineTickets: Bool?, _ stairs: Bool?, _ elevator: Bool?, _ toilet: Bool?)
+    private init(_ stopID: Int, _ routeType: TransportType, _ stopName: String, _ stationDescription: String?, _ operatingHours: String?, _ phoneNumber: String?, _ lostPropertyNumber: String?, _ mykiZone: String?, _ mykiMachine: Bool, _ vlineTickets: Bool, _ stairs: Bool, _ elevator: Bool, _ toilet: Bool)
     {
         self.stopID = stopID
         self.routeType = routeType
@@ -78,13 +78,13 @@ class StationDetails
         let lostPropertyNumber = stopContact["lost_property"] as? String
         
         let mykiZone = stopTicket["zone"] as? String
-        let mykiMachine = stopTicket["ticket_machine"] as? Bool
-        let vlineTickets = stopTicket["vline_reservation"] as? Bool
+        let mykiMachine = stopTicket["ticket_machine"] as? Bool ?? false
+        let vlineTickets = stopTicket["vline_reservation"] as? Bool ?? false
         
-        let toilet = stopAmenities["toilet"] as? Bool
+        let toilet = stopAmenities["toilet"] as? Bool ?? false
         
-        let stairs = stopAccessibility["stairs"] as? Bool
-        let elevatorAvailable = stopAccessibility["lift"] as? Bool
+        let stairs = stopAccessibility["stairs"] as? Bool ?? false
+        let elevatorAvailable = stopAccessibility["lift"] as? Bool ?? false
 
         return StationDetails(stopID, routeType, stopName, stationDescription, operatingHours, phoneNumber, lostPropertyNumber, mykiZone, mykiMachine, vlineTickets, stairs, elevatorAvailable, toilet)
     }

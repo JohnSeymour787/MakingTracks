@@ -237,27 +237,135 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Station Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myk-oL-PX5">
-                                <rect key="frame" x="51" y="20" width="313" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myk-oL-PX5">
+                                <rect key="frame" x="20" y="19.999999999999996" width="374" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Myki Zone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoX-Cj-EjA">
+                                <rect key="frame" x="20" y="282" width="374" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Myki Zone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoX-Cj-EjA">
-                                <rect key="frame" x="51" y="92" width="157" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G4-jm-VeW">
+                                <rect key="frame" x="20" y="115.66666666666667" width="374" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh5-Sp-ccc">
+                                <rect key="frame" x="20" y="196.33333333333334" width="374" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost Property number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90H-HT-Hva">
+                                <rect key="frame" x="20" y="236.66666666666666" width="374" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Myki Machine: Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpg-CJ-0jR">
+                                <rect key="frame" x="20" y="322.33333333333331" width="374" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vline Tickets: No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSb-bJ-RSP">
+                                <rect key="frame" x="20" y="362.66666666666669" width="374" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stairs: No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpZ-zP-Enc">
+                                <rect key="frame" x="20" y="408" width="374" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elevator: Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKS-wr-BGc">
+                                <rect key="frame" x="20" y="448.33333333333331" width="374" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating Hours" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-c7-igQ">
+                                <rect key="frame" x="20" y="156" width="374" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zw-x9-YCr">
+                                <rect key="frame" x="147" y="70.666666666666671" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NHh-gA-x92"/>
+                                    <constraint firstAttribute="width" constant="120" id="OuL-1G-mvs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toilet Available: Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgx-wA-oQ5">
+                                <rect key="frame" x="20" y="488.66666666666669" width="374" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="myk-oL-PX5" firstAttribute="top" secondItem="qLd-sa-7Wp" secondAttribute="top" constant="20" id="2uh-pt-5QF"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="MKS-wr-BGc" secondAttribute="trailing" constant="20" id="3LY-CP-UWO"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="JSb-bJ-RSP" secondAttribute="trailing" constant="20" id="3qy-io-nGI"/>
+                            <constraint firstItem="myk-oL-PX5" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="6Cl-yT-E26"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="kh5-Sp-ccc" secondAttribute="trailing" constant="20" id="6TY-Ud-b6w"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="FpZ-zP-Enc" secondAttribute="trailing" constant="20" id="8bI-gE-NVh"/>
+                            <constraint firstItem="FpZ-zP-Enc" firstAttribute="top" secondItem="JSb-bJ-RSP" secondAttribute="bottom" constant="25" id="9pS-br-2Bv"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="ZDE-c7-igQ" secondAttribute="trailing" constant="20" id="B0V-cl-zpr"/>
+                            <constraint firstItem="kh5-Sp-ccc" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="BCW-cj-izC"/>
+                            <constraint firstItem="5zw-x9-YCr" firstAttribute="top" secondItem="myk-oL-PX5" secondAttribute="bottom" constant="10" id="Dke-y9-lyf"/>
+                            <constraint firstItem="hoX-Cj-EjA" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="GYr-d0-qge"/>
+                            <constraint firstItem="Rpg-CJ-0jR" firstAttribute="top" secondItem="hoX-Cj-EjA" secondAttribute="bottom" constant="20" id="Gwl-RS-QbE"/>
+                            <constraint firstItem="hoX-Cj-EjA" firstAttribute="top" secondItem="90H-HT-Hva" secondAttribute="bottom" constant="25" id="JkA-za-qk4"/>
+                            <constraint firstItem="ZDE-c7-igQ" firstAttribute="top" secondItem="6G4-jm-VeW" secondAttribute="bottom" constant="20" id="KxE-Rs-QMA"/>
+                            <constraint firstItem="JSb-bJ-RSP" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="OWd-yy-CSg"/>
+                            <constraint firstItem="5zw-x9-YCr" firstAttribute="centerX" secondItem="vub-tp-Kfb" secondAttribute="centerX" id="UPm-Y9-dsU"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="90H-HT-Hva" secondAttribute="trailing" constant="20" id="VBe-Sd-svh"/>
+                            <constraint firstItem="90H-HT-Hva" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="X1l-Pi-TMT"/>
+                            <constraint firstItem="6G4-jm-VeW" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="Z8H-Ox-yw5"/>
+                            <constraint firstItem="MKS-wr-BGc" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="Zlr-1d-HkA"/>
+                            <constraint firstItem="kh5-Sp-ccc" firstAttribute="top" secondItem="ZDE-c7-igQ" secondAttribute="bottom" constant="20" id="cZh-Nr-2h9"/>
+                            <constraint firstItem="FpZ-zP-Enc" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="ilO-9q-ofa"/>
+                            <constraint firstItem="6G4-jm-VeW" firstAttribute="top" secondItem="5zw-x9-YCr" secondAttribute="bottom" constant="15" id="jwo-WQ-BJL"/>
+                            <constraint firstItem="ZDE-c7-igQ" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="kQ9-GG-Q0V"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="6G4-jm-VeW" secondAttribute="trailing" constant="20" id="kol-4z-uvM"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="hoX-Cj-EjA" secondAttribute="trailing" constant="20" id="mCf-S3-JgR"/>
+                            <constraint firstItem="Rpg-CJ-0jR" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="mOA-LA-EOT"/>
+                            <constraint firstItem="Vgx-wA-oQ5" firstAttribute="top" secondItem="MKS-wr-BGc" secondAttribute="bottom" constant="20" id="pOl-GV-0a6"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="Vgx-wA-oQ5" secondAttribute="trailing" constant="20" id="q4U-hU-5yI"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="myk-oL-PX5" secondAttribute="trailing" constant="20" id="qy4-Ko-Si3"/>
+                            <constraint firstItem="90H-HT-Hva" firstAttribute="top" secondItem="kh5-Sp-ccc" secondAttribute="bottom" constant="20" id="rFB-Sb-Xlc"/>
+                            <constraint firstItem="qLd-sa-7Wp" firstAttribute="trailing" secondItem="Rpg-CJ-0jR" secondAttribute="trailing" constant="20" id="rX1-Dj-AqO"/>
+                            <constraint firstItem="Vgx-wA-oQ5" firstAttribute="leading" secondItem="qLd-sa-7Wp" secondAttribute="leading" constant="20" id="uo3-tc-j30"/>
+                            <constraint firstItem="JSb-bJ-RSP" firstAttribute="top" secondItem="Rpg-CJ-0jR" secondAttribute="bottom" constant="20" id="x7i-ke-2sd"/>
+                            <constraint firstItem="MKS-wr-BGc" firstAttribute="top" secondItem="FpZ-zP-Enc" secondAttribute="bottom" constant="20" id="xN7-1a-DZo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qLd-sa-7Wp"/>
                     </view>
                     <connections>
+                        <outlet property="elevatorLabel" destination="MKS-wr-BGc" id="hbg-YD-qlC"/>
+                        <outlet property="lostPropertyLabel" destination="90H-HT-Hva" id="Vg9-1n-xcY"/>
+                        <outlet property="mykiMachineLabel" destination="Rpg-CJ-0jR" id="Lsv-24-hsT"/>
                         <outlet property="mykiZoneLabel" destination="hoX-Cj-EjA" id="uHf-V9-PUh"/>
+                        <outlet property="operatingHoursLabel" destination="ZDE-c7-igQ" id="lBG-Wo-WKN"/>
+                        <outlet property="phoneNumberLabel" destination="kh5-Sp-ccc" id="sZo-nP-YSr"/>
+                        <outlet property="stairsLabel" destination="FpZ-zP-Enc" id="YYn-A4-hcx"/>
+                        <outlet property="stationDescriptionLabel" destination="6G4-jm-VeW" id="fUp-IQ-DKu"/>
                         <outlet property="stationNameLabel" destination="myk-oL-PX5" id="cfC-la-dUt"/>
+                        <outlet property="toiletLabel" destination="Vgx-wA-oQ5" id="WZz-55-laj"/>
+                        <outlet property="vlineTicketsLabel" destination="JSb-bJ-RSP" id="ItI-Rt-vkh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9M-wr-kv2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
