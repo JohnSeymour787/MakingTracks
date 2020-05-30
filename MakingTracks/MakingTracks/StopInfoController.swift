@@ -40,6 +40,12 @@ class StopInfoController: NSObject, NetworkControllerDelegate
             
             return
         }
+        else if let stationDetails = decodedData as? StationDetails
+        {
+            stopDetails = stationDetails
+            
+            return
+        }
         
         //Otherwise, the decodedData might be a new array of DepatureDetails instances
         departuresArray = decodedData as? [DepartureDetails]
@@ -56,15 +62,27 @@ class StopInfoController: NSObject, NetworkControllerDelegate
         }
     }
     
+
     var delegate: UpdateTableDataDelegate?
     private var departuresArray: [DepartureDetails]?
-    //stopDetails
+    private var stopDetails: StationDetails?
     
     ///Calls the API to get an array of DepartureDetails for the given stop
-    func beginStopsDataRetrieval(stopID: Int)
+    func beginStopDataRetrieval(stopID: Int)
     {
         NetworkController.shared.delegate = self
         NetworkController.shared.getDeparturesFor(stopID: stopID)
+        
+        DispatchQueue.global(qos: .userInitiated).async
+        {   [weak self] in
+            
+            //NetworkController.shared.
+        }
+    }
+    
+    func beginStopDetailsDataRetrieval()
+    {
+        
     }
 }
 
