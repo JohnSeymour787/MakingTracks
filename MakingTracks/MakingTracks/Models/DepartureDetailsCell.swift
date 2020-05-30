@@ -30,7 +30,7 @@ class DepartureDetailsCell: UITableViewCell
     {
         platformNumberLabel.text = "Platform: \(details.platformNumber)"
         atPlatformLabel.text = "At platform: \(details.atPlatform ? "Yes" : "No")"
-        remainingDepartureTimeLabel.text = "\(details.calculatedRemainingTime) minutes"
+        remainingDepartureTimeLabel.text = "\(details.calculatedRemainingTime) minute\(details.calculatedRemainingTime != 1 ? "s" : "")"
         directionLabel.text = details.directionString
         departureTime.text = details.departureTimeString
     }

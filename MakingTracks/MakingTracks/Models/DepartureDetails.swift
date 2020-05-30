@@ -90,7 +90,7 @@ class DepartureDetails
         return result
     }
     
-    func updateDirectionNameFrom(rawJSON: Any)
+    func updateDirectionNameFrom(rawJSON: Any) -> String?
     {
         guard
             let jsonOuterObject = rawJSON as? [String: Any],
@@ -98,12 +98,14 @@ class DepartureDetails
             directionsArray.count >= 0
         else
         {
-            return
+            return nil
         }
         
         if let firstElement = directionsArray.first as? [String: Any]
         {
             directionString = firstElement["direction_name"] as? String
+            return directionString
         }
+        return nil
     }
 }

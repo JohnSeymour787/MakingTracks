@@ -33,6 +33,8 @@ class NetworkController
         return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
     }()
     
+    private var directionsCache: [Int: String] = [:]
+    
     //MARK: Private Methods
     
     ///Standard URLSession.DataTask completion handler parameter values check. Ensures that no error, reponse is good HTTP and with MIME type of application/json, and that data is not nil.
@@ -150,7 +152,7 @@ class NetworkController
     
     func getDeparturesFor(stopID: Int, routeType: TransportType = .Train)
     {
-        let APIURL = Constants.APIEndPoints.DeparturesFromStop + "route_type/\(routeType)/stop/\(stopID)?max_results=1"
+        let APIURL = Constants.APIEndPoints.DeparturesFromStop + "route_type/\(routeType)/stop/\(stopID)?max_results=2"
         
         guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
         {
@@ -178,6 +180,14 @@ class NetworkController
     
     func updateDirectionName(for departureDetails: DepartureDetails, transportType: TransportType = .Train)
     {
+        if let existingDirName = directionsCache[departureDetails.directionID]
+        {
+            departureDetails.directionString = existingDirName
+            delegate?.dataDecodingComplete("")
+            
+            return
+        }
+        
         let APIURL = Constants.APIEndPoints.DirectionDetailsForRouteType + "\(departureDetails.directionID)/route_type/\(transportType)"
         
         guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
@@ -194,8 +204,12 @@ class NetworkController
 
             if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
             {
-                departureDetails.updateDirectionNameFrom(rawJSON: jsonSerialised)
-                self.delegate?.dataDecodingComplete("")
+                if let decodedDirection = departureDetails.updateDirectionNameFrom(rawJSON: jsonSerialised)
+                {
+                    self.directionsCache[departureDetails.directionID] = decodedDirection
+                    self.delegate?.dataDecodingComplete("")
+                }
+                
             }
         }
         
