@@ -27,6 +27,20 @@ class DepartureDetails
         return Int(scheduledDepartureTime.timeIntervalSinceNow / 60.0)
     }
     
+    var departureTimeString: String
+    {
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "h:mm a"
+        //Cannot use this because working on a remote desktop based in San Francisco!
+        //formatter.timeZone = .current
+        formatter.timeZone = TimeZone(identifier: "Australia/Melbourne")
+        
+        let currentTime = formatter.string(from: scheduledDepartureTime)
+        
+        return currentTime
+    }
+    
     init(_ stopID: Int, _ routeID: Int, _ directionID: Int, _ platformNumber: Int, _ atPlatform: Bool, _ departureTime: Date)
     {
         self.stopID = stopID
@@ -68,7 +82,6 @@ class DepartureDetails
                    let utcTime = dateFormatter.date(from: utcTimeRaw)
                 {
                     itemToAdd = DepartureDetails(stopID, routeID, directionID, platformNumber, atPlatform, utcTime)
-                    
                     
                     result.append(itemToAdd)
                 }

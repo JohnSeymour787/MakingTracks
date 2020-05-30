@@ -14,7 +14,10 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     {
         DispatchQueue.main.async
         {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
             self.tableView.reloadData()
+            self.tableView.isHidden = false
         }
     }
     
@@ -23,6 +26,7 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     var transportType: TransportType?
     let controller = StopInfoController()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stopNameLabel: UILabel!
     
@@ -30,6 +34,8 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     {
         super.viewDidLoad()
 
+        activityIndicator.startAnimating()
+        
         tableView.dataSource = controller.self
         
         //Set view title label text

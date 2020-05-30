@@ -18,10 +18,10 @@ class StopInfoController: NSObject, NetworkControllerDelegate
         
     }
     
-    func dataDecodingComplete(_ decodedData: [Any])
+    func dataDecodingComplete(_ decodedData: Any)
     {
-        //If the NetworkController calls this delegate method with a single String element, then one of the departure elements in the array has had its name updated
-        if ((decodedData.first as? String) != nil)
+        //If the NetworkController calls this delegate method with an empty string then one of the departure elements in the array has had its name updated
+        if ((decodedData as? String) != nil)
         {
             completedDirectionUpdates += 1
             
