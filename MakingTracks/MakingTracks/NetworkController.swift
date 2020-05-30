@@ -195,7 +195,7 @@ class NetworkController
             if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
             {
                 departureDetails.updateDirectionNameFrom(rawJSON: jsonSerialised)
-                self.delegate?.dataDecodingComplete(["Done"])
+                self.delegate?.dataDecodingComplete("")
             }
         }
         

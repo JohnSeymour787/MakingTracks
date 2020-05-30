@@ -24,7 +24,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
     }
     
-    func dataDecodingComplete(_ decodedData: [Any])
+    func dataDecodingComplete(_ decodedData: Any)
     {
         guard let annotations = decodedData as? [MKAnnotation] else
         {

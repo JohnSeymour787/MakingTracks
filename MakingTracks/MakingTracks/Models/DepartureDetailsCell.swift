@@ -24,11 +24,14 @@ class DepartureDetailsCell: UITableViewCell
     
     @IBOutlet weak var atPlatformLabel: UILabel!
     
+    @IBOutlet weak var departureTime: UILabel!
+    
     func setLabels(details: DepartureDetails)
     {
         platformNumberLabel.text = "Platform: \(details.platformNumber)"
         atPlatformLabel.text = "At platform: \(details.atPlatform ? "Yes" : "No")"
         remainingDepartureTimeLabel.text = "\(details.calculatedRemainingTime) minutes"
         directionLabel.text = details.directionString
+        departureTime.text = details.departureTimeString
     }
 }
