@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B94F00E02480EB95006106D2 /* ScheduledServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */; };
+		B970B9BF248238DD004CD9B7 /* StopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */; };
+		B970B9C124823DB5004CD9B7 /* StationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970B9C024823DB5004CD9B7 /* StationDetails.swift */; };
 		B9A8F658246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */; };
 		B9A8F65A246FAAFD00A13CA9 /* NetworkControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F659246FAAFD00A13CA9 /* NetworkControllerTests.swift */; };
 		B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledServicesViewController.swift; sourceTree = "<group>"; };
+		B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsViewController.swift; sourceTree = "<group>"; };
+		B970B9C024823DB5004CD9B7 /* StationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetails.swift; sourceTree = "<group>"; };
 		B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTVAPIHealthCheckModel.swift; sourceTree = "<group>"; };
 		B9A8F659246FAAFD00A13CA9 /* NetworkControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerTests.swift; sourceTree = "<group>"; };
 		B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				B9F1D8932481372500326E27 /* DepartureDetails.swift */,
 				B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */,
 				B9F1D89724814E2D00326E27 /* UpdateTableDataDelegate.swift */,
+				B970B9C024823DB5004CD9B7 /* StationDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				B9E27C1724808D3B000DE575 /* LocationController.swift */,
 				B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */,
 				B9F1D8912481330800326E27 /* StopInfoController.swift */,
+				B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */,
 			);
 			path = MakingTracks;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */,
 				B9E27C1824808D3B000DE575 /* LocationController.swift in Sources */,
 				B9F1D8922481330800326E27 /* StopInfoController.swift in Sources */,
+				B970B9C124823DB5004CD9B7 /* StationDetails.swift in Sources */,
 				B9F1D89824814E2D00326E27 /* UpdateTableDataDelegate.swift in Sources */,
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
 				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
@@ -362,6 +369,7 @@
 				B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */,
 				B9F1D89624813CAF00326E27 /* DepartureDetailsCell.swift in Sources */,
 				B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */,
+				B970B9BF248238DD004CD9B7 /* StopDetailsViewController.swift in Sources */,
 				B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */,
 				B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */,
 				B94F00E02480EB95006106D2 /* ScheduledServicesViewController.swift in Sources */,

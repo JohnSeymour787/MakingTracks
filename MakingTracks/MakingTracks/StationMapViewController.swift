@@ -11,7 +11,6 @@
         -Should have a popup if the healthcheck fails (do in main queue)
     -textFieldShouldReturn() delegate method should start a segue to the search screen, passing it the text in the textfield
     -Remove old MapViewDelegate commented function's code
-    -Update calloutAccessoryTapped method to open Scheduled Services screen
  */
 
 import UIKit
@@ -24,6 +23,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
     }
     
+    //Update the mapView's annotations with this decoded data, if it is an array of MKAnnotations.
     func dataDecodingComplete(_ decodedData: Any)
     {
         guard let annotations = decodedData as? [MKAnnotation] else

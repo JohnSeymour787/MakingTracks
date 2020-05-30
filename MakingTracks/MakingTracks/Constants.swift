@@ -32,8 +32,10 @@ struct Constants
         ///Base URL for retrieving stops near a location. Requires latitude and longitude parameters, separated by a comma
         static let StopsNearLocation = "https://timetableapi.ptv.vic.gov.au/v3/stops/location/"
         
+        ///Base URL for retrieving upcoming departures from a given stop. Requires stop ID and route ID parameters.
         static let DeparturesFromStop = "https://timetableapi.ptv.vic.gov.au/v3/departures/"
         
+        ///Base URL for retrieving all details, including name, of a direction, from a required direction ID parameter.
         static let DirectionDetailsForRouteType = "https://timetableapi.ptv.vic.gov.au/v3/directions/"
     }
     

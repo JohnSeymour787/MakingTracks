@@ -10,6 +10,7 @@ import UIKit
 
 class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
 {
+    //When the download is complete, hide the activity indicator, unhide the tableView, and reload the data
     func downloadComplete()
     {
         DispatchQueue.main.async
@@ -30,10 +31,19 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stopNameLabel: UILabel!
     
+    @IBOutlet weak var stationDetailsButton: UIButton!
+    @IBAction func stationDetailsButtonPressed()
+    {
+        performSegue(withIdentifier: "stationDetailsSegue", sender: nil)
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        //Stop details are only available for .Train TransportTypes (as per API data)
+        stationDetailsButton.isHidden = transportType != .Train
+        
         activityIndicator.startAnimating()
         
         tableView.dataSource = controller.self
@@ -42,7 +52,9 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
         
         controller.delegate = self
-        controller.beginStopsDataRetrieval(stopID: stopID!)
+        
+        //Guaranteed to have a stopID when loads
+        controller.beginStopDataRetrieval(stopID: stopID!)
     }
 
     
@@ -51,14 +63,17 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         dismiss(animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let viewController = segue.destination as? StopDetailsViewController
+        {
+            viewController.controller = self.controller
+        }
     }
-    */
+    
 
 }
