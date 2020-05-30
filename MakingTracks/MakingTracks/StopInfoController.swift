@@ -5,12 +5,15 @@
 //  Created by John on 5/29/20.
 //  Copyright © 2020 John. All rights reserved.
 //
+//  Purpose: Central controller between the ScheduledServicesViewController and the StopDetailsViewController. Retrieves and contains all details of a specific stop, as well as the upcoming departures in all directions.
+
 
 import Foundation
 import UIKit
 
 class StopInfoController: NSObject, NetworkControllerDelegate
 {
+    ///Remembers the number of elements in the departuresArray that have updated their direction name properties. Only when this value matches the size of the array are all updates complete and this controller should then signal the ScheduledServicesViewController to load its tableView data.
     private var completedDirectionUpdates = 0
     
     func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
@@ -25,18 +28,20 @@ class StopInfoController: NSObject, NetworkControllerDelegate
         {
             completedDirectionUpdates += 1
             
+            //All array elements now have proper direction string values
             if completedDirectionUpdates == departuresArray?.count
             {
                 //Tell the ScheduledServicesViewController to reload its table data
                 delegate?.downloadComplete()
                 
-                //Don't expect any more calls to this if block anymore
+                //Don't expect any more calls to this if block
                 completedDirectionUpdates = 0
             }
             
             return
         }
         
+        //Otherwise, the decodedData might be a new array of DepatureDetails instances
         departuresArray = decodedData as? [DepartureDetails]
 
         guard departuresArray != nil else
@@ -44,28 +49,23 @@ class StopInfoController: NSObject, NetworkControllerDelegate
             return
         }
         
+        //Then need to make each element begin an API request (or use cache if available) to get its valid direction name string
         for departure in departuresArray!
         {
             NetworkController.shared.updateDirectionName(for: departure)
         }
     }
     
-    override init()
-    {
-        super.init()
-        
-        
-    }
     var delegate: UpdateTableDataDelegate?
-    var departuresArray: [DepartureDetails]?
+    private var departuresArray: [DepartureDetails]?
     //stopDetails
     
+    ///Calls the API to get an array of DepartureDetails for the given stop
     func beginStopsDataRetrieval(stopID: Int)
     {
         NetworkController.shared.delegate = self
         NetworkController.shared.getDeparturesFor(stopID: stopID)
     }
-    
 }
 
 
@@ -82,12 +82,11 @@ extension StopInfoController: UITableViewDataSource
         
         if departuresArray != nil
         {
+            //Sets UILabel values for this cell based on the various properties of the current departure
             cell.setLabels(details: departuresArray![indexPath.row])
         }
         
         return cell
     }
-    
-    
 }
 

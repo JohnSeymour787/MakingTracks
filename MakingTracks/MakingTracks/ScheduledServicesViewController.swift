@@ -10,6 +10,7 @@ import UIKit
 
 class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
 {
+    //When the download is complete, hide the activity indicator, unhide the tableView, and reload the data
     func downloadComplete()
     {
         DispatchQueue.main.async
@@ -42,6 +43,8 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
         
         controller.delegate = self
+        
+        //Guaranteed to have a stopID when loads
         controller.beginStopsDataRetrieval(stopID: stopID!)
     }
 

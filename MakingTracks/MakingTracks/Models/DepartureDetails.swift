@@ -12,11 +12,8 @@ class DepartureDetails
 {
     let stopID: Int
     let routeID: Int
-    //Maybe don't need this one
-    var runID: Int?
     let directionID: Int
     var directionString: String?
-    
     let scheduledDepartureTime: Date
     let atPlatform: Bool
     let platformNumber: Int
@@ -27,6 +24,7 @@ class DepartureDetails
         return Int(scheduledDepartureTime.timeIntervalSinceNow / 60.0)
     }
     
+    ///Returns a string of the departure date in h:mm am/pm format
     var departureTimeString: String
     {
         let formatter = DateFormatter()
@@ -34,6 +32,7 @@ class DepartureDetails
         formatter.dateFormat = "h:mm a"
         //Cannot use this because working on a remote desktop based in San Francisco!
         //formatter.timeZone = .current
+        
         formatter.timeZone = TimeZone(identifier: "Australia/Melbourne")
         
         let currentTime = formatter.string(from: scheduledDepartureTime)
@@ -51,6 +50,7 @@ class DepartureDetails
         self.scheduledDepartureTime = departureTime
     }
     
+    ///Converts a raw JSON Any object to an array of class instances representing an upcoming departure from a stop.
     static func decodeToArray(rawJSON: Any) -> [DepartureDetails]?
     {
         //Need to get the inner "departures" array from the JSON server response
@@ -64,6 +64,8 @@ class DepartureDetails
         
         var result: [DepartureDetails] = []
         var itemToAdd: DepartureDetails
+        
+        //Formatter to convert a UTC date string into a Date object
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
@@ -90,8 +92,10 @@ class DepartureDetails
         return result
     }
     
+    ///Class instance attempts to convert a serialised JSON object into a JSON dictionary containing a direction_name key. Uses this to update its directionString property. Returns direction name if successful, to allow for future caching in NetworkController.
     func updateDirectionNameFrom(rawJSON: Any) -> String?
     {
+        //Should be at least 1 element in an existing 'directions' array
         guard
             let jsonOuterObject = rawJSON as? [String: Any],
             let directionsArray = jsonOuterObject["directions"] as? [Any],
@@ -101,11 +105,13 @@ class DepartureDetails
             return nil
         }
         
+        //The first element will contain the valid direction name
         if let firstElement = directionsArray.first as? [String: Any]
         {
             directionString = firstElement["direction_name"] as? String
             return directionString
         }
+        
         return nil
     }
 }

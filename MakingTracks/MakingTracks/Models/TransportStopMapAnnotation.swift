@@ -68,7 +68,6 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
                     itemToAdd = TransportStopMapAnnotation(name: name, suburb: suburb, stopID: stopID, routeType: routeType, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
                     result.append(itemToAdd)
                 }
-
             }
         }
         

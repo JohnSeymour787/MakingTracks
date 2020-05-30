@@ -120,7 +120,7 @@ class NetworkController
         task.resume()
     }
     
-    ///Retrieves all stops in the state of Victoria for a single transport type. Calls 'addMapAnnotations' NetworkController delegate method when complete.
+    ///Retrieves all stops in the state of Victoria for a single transport type. Calls 'dataDecodingComplete' NetworkController delegate method when complete.
     func getAllStops(transportType: TransportType = .Train)
     {
         //API request still requires a location, so do a stops request from the center of Melbourne.
@@ -138,7 +138,7 @@ class NetworkController
         }
     }
     
-    ///Calls the API to retrieve up to 30 stops of a given transport type near a coordinate location. Calls 'addMapAnnotations' NetworkController delegate method when complete.
+    ///Calls the API to retrieve up to 30 stops of a given transport type near a coordinate location. Calls 'dataDecodingComplete' NetworkController delegate method when complete.
     func getStops(near coordinate: CLLocationCoordinate2D, transportType: TransportType = .Train)
     {
         let APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)&max_distance=\(Constants.LocationSearch.DefaultDistanceSearch)"
@@ -150,6 +150,7 @@ class NetworkController
         }
     }
     
+    ///Gets upcoming scheduled departure time details from the API for a given stopID and routeType. Calls 'dataDecodingComplete' NetworkController delegate method when complete.
     func getDeparturesFor(stopID: Int, routeType: TransportType = .Train)
     {
         let APIURL = Constants.APIEndPoints.DeparturesFromStop + "route_type/\(routeType)/stop/\(stopID)?max_results=2"
@@ -178,11 +179,16 @@ class NetworkController
         task.resume()
     }
     
+    
+    ///Updates the directionName string property of a DepartureDetails instance using its directionID and a call to the API. Calls 'dataDecodingComplete' NetworkController delegate method when complete, passing an empty string to indicate to a StopInfoController that another DepartureDetails instance has been updated. Also caches the direction string to avoid an API call for later function calls, as many stops can have the same direction ID.
     func updateDirectionName(for departureDetails: DepartureDetails, transportType: TransportType = .Train)
     {
+        //If value is in the cache, use it and return before calling the API.
         if let existingDirName = directionsCache[departureDetails.directionID]
         {
             departureDetails.directionString = existingDirName
+            
+            //Inform the StopInfoController that another instance in its departuresArray has been updated.
             delegate?.dataDecodingComplete("")
             
             return
@@ -197,20 +203,19 @@ class NetworkController
         
         let task = session.dataTask(with: url)
         {   data, response, error in
-            guard self.standardParameterCheck(data, response, error) else
+            //Check parameters are fine, JSON Serialisation is possible, and decoding is successful
+            guard self.standardParameterCheck(data, response, error),
+            let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments),
+            let decodedDirection = departureDetails.updateDirectionNameFrom(rawJSON: jsonSerialised) else
             {
                 return
             }
-
-            if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-            {
-                if let decodedDirection = departureDetails.updateDirectionNameFrom(rawJSON: jsonSerialised)
-                {
-                    self.directionsCache[departureDetails.directionID] = decodedDirection
-                    self.delegate?.dataDecodingComplete("")
-                }
-                
-            }
+            
+            //Add this value to the cache to avoid future API calls with this ID.
+            self.directionsCache[departureDetails.directionID] = decodedDirection
+                    
+            //Inform the StopInfoController that another instance in its departuresArray has been updated.
+            self.delegate?.dataDecodingComplete("")
         }
         
         task.resume()
