@@ -32,6 +32,7 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     @IBOutlet weak var stopNameLabel: UILabel!
     
     @IBOutlet weak var stationDetailsButton: UIButton!
+    
     @IBAction func stationDetailsButtonPressed()
     {
         performSegue(withIdentifier: "stationDetailsSegue", sender: nil)
@@ -53,8 +54,8 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         
         controller.delegate = self
         
-        //Guaranteed to have a stopID when loads
-        controller.beginStopDataRetrieval(stopID: stopID!)
+        //Guaranteed to have a stopID and transportType when loads
+        controller.beginStopDataRetrieval(stopID: stopID!, transportType: transportType!)
     }
 
     

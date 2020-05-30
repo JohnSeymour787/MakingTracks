@@ -50,10 +50,10 @@ class StationDetails
         guard
             let jsonOuterObject = rawJSON as? [String: Any],
             let stop = jsonOuterObject["stop"] as? [String: Any],
-            let stopContact = jsonOuterObject["stop_contact"] as? [String: Any],
-            let stopTicket = jsonOuterObject["stop_ticket"] as? [String: Any],
-            let stopAmenities = jsonOuterObject["stop_amenities"] as? [String: Any],
-            let stopAccessibility = jsonOuterObject["stop_accessibility"] as? [String: Any]
+            let stopContact = stop["stop_contact"] as? [String: Any],
+            let stopTicket = stop["stop_ticket"] as? [String: Any],
+            let stopAmenities = stop["stop_amenities"] as? [String: Any],
+            let stopAccessibility = stop["stop_accessibility"] as? [String: Any]
         else
         {
             return nil
@@ -61,16 +61,16 @@ class StationDetails
         
         //Also, the stopID and routeType must exist for future possible API calls for departures
         guard
-            let stopID = jsonOuterObject["stop_id"] as? Int,
-            let routeTypeRaw = jsonOuterObject["route_type"] as? Int,
+            let stopID = stop["stop_id"] as? Int,
+            let routeTypeRaw = stop["route_type"] as? Int,
             let routeType = TransportType(rawValue: routeTypeRaw)
         else
         {
             return nil
         }
 
-        let stopName = jsonOuterObject["stop_name"] as? String ?? ""
-        let stationDescription = jsonOuterObject["station_description"] as? String
+        let stopName = stop["stop_name"] as? String ?? ""
+        let stationDescription = stop["station_description"] as? String
         
         let operatingHours = stop["operating_hours"] as? String
         
