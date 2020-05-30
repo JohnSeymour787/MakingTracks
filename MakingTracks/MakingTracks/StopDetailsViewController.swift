@@ -8,17 +8,45 @@
 
 import UIKit
 
-class StopDetailsViewController: UIViewController
+class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
 {
-    var controller: StopInfoController?
+    func downloadComplete()
+    {
+        DispatchQueue.main.async
+        {
+            self.updateLabels()
+        }
+    }
+    
+
+    @IBOutlet weak var mykiZoneLabel: UILabel!
+    @IBOutlet weak var stationNameLabel: UILabel!
+    var controller: StopInfoController!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //If the controller has not yet updated its stopDetails, quickly make this view the delegate so it can update the labels with the received stop details
+        if controller.stopDetails == nil
+        {
+            controller.delegate = self
+        }
+        else
+        {
+            updateLabels()
+        }
     }
     
-    
+    private func updateLabels()
+    {
+        guard let details = controller.stopDetails else
+        {
+            return
+        }
+        
+        stationNameLabel.text = details.stopName + "Station"
+        mykiZoneLabel.text = "Myki Zone: " + details.mykiZone!
+    }
 
 }

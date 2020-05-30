@@ -43,7 +43,7 @@ class StopInfoController: NSObject, NetworkControllerDelegate
         else if let stationDetails = decodedData as? StationDetails
         {
             stopDetails = stationDetails
-            
+            delegate?.downloadComplete()
             return
         }
         
@@ -65,7 +65,7 @@ class StopInfoController: NSObject, NetworkControllerDelegate
 
     var delegate: UpdateTableDataDelegate?
     private var departuresArray: [DepartureDetails]?
-    private var stopDetails: StationDetails?
+    var stopDetails: StationDetails?
     
     ///Calls the API to get an array of DepartureDetails for the given stop
     func beginStopDataRetrieval(stopID: Int, transportType: TransportType)

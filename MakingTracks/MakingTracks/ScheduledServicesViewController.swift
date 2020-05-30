@@ -22,9 +22,9 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         }
     }
     
-    var stopID: Int?
-    var stopName: String = ""
-    var transportType: TransportType?
+    var stopID: Int!
+    var stopName: String!
+    var transportType: TransportType!
     let controller = StopInfoController()
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -55,7 +55,7 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         controller.delegate = self
         
         //Guaranteed to have a stopID and transportType when loads
-        controller.beginStopDataRetrieval(stopID: stopID!, transportType: transportType!)
+        controller.beginStopDataRetrieval(stopID: stopID, transportType: transportType)
     }
 
     
@@ -64,10 +64,14 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         dismiss(animated: true, completion: nil)
     }
     
+    //In case the delegate was removed by the StopDetails ViewController
+    override func viewWillAppear(_ animated: Bool)
+    {
+        controller.delegate = self
+    }
+    
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let viewController = segue.destination as? StopDetailsViewController
