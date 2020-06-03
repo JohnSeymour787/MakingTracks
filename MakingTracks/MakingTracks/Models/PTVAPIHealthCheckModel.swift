@@ -2,13 +2,13 @@
 //  PTVAPIHealthCheckModel.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/15/20.
+//  Created by John on 5/15/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
 import Foundation
 
-struct PTVAPIHealthCheckModel : Decodable
+struct PTVAPIHealthCheckModel: Decodable
 {
     let securityTokenOK: Bool
     let clientClockOK: Bool
