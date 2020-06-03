@@ -47,8 +47,8 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         
         activityIndicator.startAnimating()
         
-        tableView.dataSource = controller.self
-        
+        tableView.dataSource = controller
+        tableView.delegate = self
         //Set view title label text
         stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
         
@@ -81,4 +81,19 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     }
     
 
+}
+
+extension ScheduledServicesViewController: UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return CGFloat(Constants.UIConstants.TableViewSectionSpacing)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.clear
+        return footerView
+    }
 }

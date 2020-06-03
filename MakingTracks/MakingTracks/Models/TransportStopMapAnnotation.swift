@@ -16,14 +16,16 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
     let suburb: String
     let stopID: Int
     let routeType: TransportType
+    let distance: Double
     
-    init(name: String, suburb: String, stopID: Int, routeType: TransportType, coordinate: CLLocationCoordinate2D)
+    init(name: String, suburb: String, stopID: Int, routeType: TransportType, coordinate: CLLocationCoordinate2D, distance: Double)
     {
         self.name = name
         self.suburb = suburb
         self.stopID = stopID
         self.routeType = routeType
         self.coordinate = coordinate
+        self.distance = distance
         
         super.init()
     }
@@ -65,7 +67,10 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
                    let lat = stop["stop_latitude"] as? Double,
                    let long = stop["stop_longitude"] as? Double
                 {
-                    itemToAdd = TransportStopMapAnnotation(name: name, suburb: suburb, stopID: stopID, routeType: routeType, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+                    //If calling NetworkController .getStops or .getAllStops then this will be nil
+                    let distance = (stop["stop_distance"] as? Double ?? 0.0)/1000
+                    
+                    itemToAdd = TransportStopMapAnnotation(name: name, suburb: suburb, stopID: stopID, routeType: routeType, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), distance: distance)
                     result.append(itemToAdd)
                 }
             }

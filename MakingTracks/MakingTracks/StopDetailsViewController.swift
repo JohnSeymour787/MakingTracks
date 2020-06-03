@@ -35,6 +35,7 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
     @IBOutlet weak var phoneNumberLabel: UILabel!
     
     @IBOutlet weak var vlineTicketsLabel: UILabel!
+
     override func viewDidLoad()
     {
         super.viewDidLoad()

@@ -87,7 +87,7 @@ extension StopInfoController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return departuresArray?.count ?? 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -97,10 +97,15 @@ extension StopInfoController: UITableViewDataSource
         if departuresArray != nil
         {
             //Sets UILabel values for this cell based on the various properties of the current departure
-            cell.setLabels(details: departuresArray![indexPath.row])
+            cell.setLabels(details: departuresArray![indexPath.section])
         }
         
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return departuresArray?.count ?? 0
     }
 }
 

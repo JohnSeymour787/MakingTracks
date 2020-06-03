@@ -22,6 +22,8 @@ class LocationController: NSObject, CLLocationManagerDelegate
 
     var delegate: LocationControllerDelegate?
     
+    var lastRecordedCoordinate: CLLocationCoordinate2D?
+    
     private let locationManager = CLLocationManager()
     
     //Assume by default that the user is moving when they launch the app to get slightly better location accuracy.
@@ -142,6 +144,8 @@ class LocationController: NSObject, CLLocationManagerDelegate
         {
             return
         }
+        
+        lastRecordedCoordinate = locations.last?.coordinate
 
         //If user was previously not moving before and this is the first accurate track of them moving beyond the distance filter, then re-enable higher-precision tracking
         if !userIsMoving

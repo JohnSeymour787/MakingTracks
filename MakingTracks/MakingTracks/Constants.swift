@@ -40,6 +40,9 @@ struct Constants
         
         ///Base URL to retrieve facility details for a stop. Requires stop ID and route_type. The latter must be Metro or Vline stop (route_type = 0 or 3). Also set stop_amenities, stop_accessibility, stop_contact, and stop_ticket parameters as true.
         static let StationDetails = "https://timetableapi.ptv.vic.gov.au/v3/stops/"
+        
+        ///Base URL to search for stops. Requires search term. Optional parameters includes route_types, latitude, longitude, include_outlets=false.
+        static let StopSearch = "https://timetableapi.ptv.vic.gov.au/v3/search/"
     }
     
     struct MapViewConstants
@@ -60,6 +63,10 @@ struct Constants
         static let DesiredAccuracy = 50.0
     }
         
-    
+    struct UIConstants
+    {
+        ///Represents the spacing between sections of a UITableView
+        static let TableViewSectionSpacing = 20.0
+    }
     
 }
