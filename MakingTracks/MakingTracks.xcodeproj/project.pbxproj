@@ -10,6 +10,8 @@
 		B94F00E02480EB95006106D2 /* ScheduledServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */; };
 		B970B9BF248238DD004CD9B7 /* StopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */; };
 		B970B9C124823DB5004CD9B7 /* StationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970B9C024823DB5004CD9B7 /* StationDetails.swift */; };
+		B99804DF2487596B0026527B /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99804DE2487596B0026527B /* SearchScreenViewController.swift */; };
+		B99804E1248759CD0026527B /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99804E0248759CD0026527B /* SearchResultsController.swift */; };
 		B9A8F658246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */; };
 		B9A8F65A246FAAFD00A13CA9 /* NetworkControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F659246FAAFD00A13CA9 /* NetworkControllerTests.swift */; };
 		B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */; };
@@ -57,6 +59,8 @@
 		B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledServicesViewController.swift; sourceTree = "<group>"; };
 		B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsViewController.swift; sourceTree = "<group>"; };
 		B970B9C024823DB5004CD9B7 /* StationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetails.swift; sourceTree = "<group>"; };
+		B99804DE2487596B0026527B /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
+		B99804E0248759CD0026527B /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTVAPIHealthCheckModel.swift; sourceTree = "<group>"; };
 		B9A8F659246FAAFD00A13CA9 /* NetworkControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerTests.swift; sourceTree = "<group>"; };
 		B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */,
 				B9F1D8912481330800326E27 /* StopInfoController.swift */,
 				B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */,
+				B99804DE2487596B0026527B /* SearchScreenViewController.swift */,
+				B99804E0248759CD0026527B /* SearchResultsController.swift */,
 			);
 			path = MakingTracks;
 			sourceTree = "<group>";
@@ -364,6 +370,8 @@
 				B970B9C124823DB5004CD9B7 /* StationDetails.swift in Sources */,
 				B9F1D89824814E2D00326E27 /* UpdateTableDataDelegate.swift in Sources */,
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
+				B99804E1248759CD0026527B /* SearchResultsController.swift in Sources */,
+				B99804DF2487596B0026527B /* SearchScreenViewController.swift in Sources */,
 				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
 				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
 				B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */,

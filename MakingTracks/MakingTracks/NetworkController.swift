@@ -143,7 +143,6 @@ class NetworkController
     {
         let APIURL = Constants.APIEndPoints.StopsNearLocation + "\(coordinate.latitude),\(coordinate.longitude)?route_types=\(transportType)&max_distance=\(Constants.LocationSearch.DefaultDistanceSearch)"
         
-
         if let task = dataTaskForAPIStops(urlString: APIURL)
         {
             task.resume()
@@ -253,5 +252,26 @@ class NetworkController
         }
             
         task.resume()
+    }
+    
+    func searchForStops(searchTerm: String, myLocation: CLLocationCoordinate2D?, transportType: TransportType = .Train)
+    {
+        var APIURL = ""
+        
+        //If location data is available, then the search URL will use it to get distance data
+        if let location = myLocation
+        {
+            APIURL = Constants.APIEndPoints.StopSearch + "\(searchTerm)?route_types=\(transportType)&latitude=\(location.latitude)&longitude=\(location.longitude)&include_outlets=false"
+        }
+        else
+        {
+            APIURL = Constants.APIEndPoints.StopSearch + "\(searchTerm)?route_types=\(transportType)&include_outlets=false"
+        }
+
+            
+        if let task = dataTaskForAPIStops(urlString: APIURL)
+        {
+            task.resume()
+        }
     }
 }

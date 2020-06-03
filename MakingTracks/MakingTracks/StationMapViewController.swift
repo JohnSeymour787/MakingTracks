@@ -82,17 +82,31 @@ extension StationMapViewController: UITextFieldDelegate
         searchTextField.resignFirstResponder()
         searchTextField.text = ""
     }
+    
+    
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let viewController = segue.destination as? SearchScreenViewController
+        {
+            viewController.searchTerm = searchTextField.text
+        }
+    }
 
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
-        print(textField.text!)
         
-        //MARK: TODO
-        //if text != "" then do a segue to the search screen. then reset .text = ""
-        //else, do nothing
+        if (searchTextField.text != "")
+        {
+            performSegue(withIdentifier: "searchScreenSegue", sender: nil)
+            searchTextField.text = ""
+        }
         
+        //Text field doesn't need to process the pressing of the button
         return false
     }
 }
