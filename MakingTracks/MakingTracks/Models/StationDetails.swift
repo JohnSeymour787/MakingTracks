@@ -17,14 +17,14 @@ class StationDetails
     let operatingHours: String?
     let phoneNumber: String?
     let lostPropertyNumber: String?
-    let mykiMachine: Bool?
+    let mykiMachine: Bool
     let stationDescription: String?
-    let stairs: Bool?
-    let elevatorAvailable: Bool?
-    let vlineTickets: Bool?
-    let toilet: Bool?
+    let stairs: Bool
+    let elevatorAvailable: Bool
+    let vlineTickets: Bool
+    let toilet: Bool
     
-    private init(_ stopID: Int, _ routeType: TransportType, _ stopName: String, _ stationDescription: String?, _ operatingHours: String?, _ phoneNumber: String?, _ lostPropertyNumber: String?, _ mykiZone: String?, _ mykiMachine: Bool?, _ vlineTickets: Bool?, _ stairs: Bool?, _ elevator: Bool?, _ toilet: Bool?)
+    private init(_ stopID: Int, _ routeType: TransportType, _ stopName: String, _ stationDescription: String?, _ operatingHours: String?, _ phoneNumber: String?, _ lostPropertyNumber: String?, _ mykiZone: String?, _ mykiMachine: Bool, _ vlineTickets: Bool, _ stairs: Bool, _ elevator: Bool, _ toilet: Bool)
     {
         self.stopID = stopID
         self.routeType = routeType
@@ -50,10 +50,10 @@ class StationDetails
         guard
             let jsonOuterObject = rawJSON as? [String: Any],
             let stop = jsonOuterObject["stop"] as? [String: Any],
-            let stopContact = jsonOuterObject["stop_contact"] as? [String: Any],
-            let stopTicket = jsonOuterObject["stop_ticket"] as? [String: Any],
-            let stopAmenities = jsonOuterObject["stop_amenities"] as? [String: Any],
-            let stopAccessibility = jsonOuterObject["stop_accessibility"] as? [String: Any]
+            let stopContact = stop["stop_contact"] as? [String: Any],
+            let stopTicket = stop["stop_ticket"] as? [String: Any],
+            let stopAmenities = stop["stop_amenities"] as? [String: Any],
+            let stopAccessibility = stop["stop_accessibility"] as? [String: Any]
         else
         {
             return nil
@@ -61,16 +61,16 @@ class StationDetails
         
         //Also, the stopID and routeType must exist for future possible API calls for departures
         guard
-            let stopID = jsonOuterObject["stop_id"] as? Int,
-            let routeTypeRaw = jsonOuterObject["route_type"] as? Int,
+            let stopID = stop["stop_id"] as? Int,
+            let routeTypeRaw = stop["route_type"] as? Int,
             let routeType = TransportType(rawValue: routeTypeRaw)
         else
         {
             return nil
         }
 
-        let stopName = jsonOuterObject["stop_name"] as? String ?? ""
-        let stationDescription = jsonOuterObject["station_description"] as? String
+        let stopName = stop["stop_name"] as? String ?? ""
+        let stationDescription = stop["station_description"] as? String
         
         let operatingHours = stop["operating_hours"] as? String
         
@@ -78,13 +78,13 @@ class StationDetails
         let lostPropertyNumber = stopContact["lost_property"] as? String
         
         let mykiZone = stopTicket["zone"] as? String
-        let mykiMachine = stopTicket["ticket_machine"] as? Bool
-        let vlineTickets = stopTicket["vline_reservation"] as? Bool
+        let mykiMachine = stopTicket["ticket_machine"] as? Bool ?? false
+        let vlineTickets = stopTicket["vline_reservation"] as? Bool ?? false
         
-        let toilet = stopAmenities["toilet"] as? Bool
+        let toilet = stopAmenities["toilet"] as? Bool ?? false
         
-        let stairs = stopAccessibility["stairs"] as? Bool
-        let elevatorAvailable = stopAccessibility["lift"] as? Bool
+        let stairs = stopAccessibility["stairs"] as? Bool ?? false
+        let elevatorAvailable = stopAccessibility["lift"] as? Bool ?? false
 
         return StationDetails(stopID, routeType, stopName, stationDescription, operatingHours, phoneNumber, lostPropertyNumber, mykiZone, mykiMachine, vlineTickets, stairs, elevatorAvailable, toilet)
     }

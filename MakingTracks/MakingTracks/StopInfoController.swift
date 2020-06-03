@@ -43,7 +43,7 @@ class StopInfoController: NSObject, NetworkControllerDelegate
         else if let stationDetails = decodedData as? StationDetails
         {
             stopDetails = stationDetails
-            
+            delegate?.downloadComplete()
             return
         }
         
@@ -65,24 +65,20 @@ class StopInfoController: NSObject, NetworkControllerDelegate
 
     var delegate: UpdateTableDataDelegate?
     private var departuresArray: [DepartureDetails]?
-    private var stopDetails: StationDetails?
+    var stopDetails: StationDetails?
     
     ///Calls the API to get an array of DepartureDetails for the given stop
-    func beginStopDataRetrieval(stopID: Int)
+    func beginStopDataRetrieval(stopID: Int, transportType: TransportType)
     {
+        //Get the departures details which are immediately needed for this screen
         NetworkController.shared.delegate = self
-        NetworkController.shared.getDeparturesFor(stopID: stopID)
+        NetworkController.shared.getDeparturesFor(stopID: stopID, transportType: transportType)
         
+        //Also, on another Queue, get the specific details for this stop, to save time later if 'Station Details' button is pressed
         DispatchQueue.global(qos: .userInitiated).async
-        {   [weak self] in
-            
-            //NetworkController.shared.
+        {
+            NetworkController.shared.getStopDetails(stopID: stopID, transportType: transportType)
         }
-    }
-    
-    func beginStopDetailsDataRetrieval()
-    {
-        
     }
 }
 

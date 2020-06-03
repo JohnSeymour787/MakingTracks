@@ -151,9 +151,9 @@ class NetworkController
     }
     
     ///Gets upcoming scheduled departure time details from the API for a given stopID and routeType. Calls 'dataDecodingComplete' NetworkController delegate method when complete.
-    func getDeparturesFor(stopID: Int, routeType: TransportType = .Train)
+    func getDeparturesFor(stopID: Int, transportType: TransportType = .Train)
     {
-        let APIURL = Constants.APIEndPoints.DeparturesFromStop + "route_type/\(routeType)/stop/\(stopID)?max_results=2"
+        let APIURL = Constants.APIEndPoints.DeparturesFromStop + "route_type/\(transportType)/stop/\(stopID)?max_results=2"
         
         guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
         {
@@ -218,6 +218,40 @@ class NetworkController
             self.delegate?.dataDecodingComplete("")
         }
         
+        task.resume()
+    }
+    
+    func getStopDetails(stopID: Int, transportType: TransportType = .Train)
+    {
+        //Can only get stop details for Metro or Vline trains
+        if transportType != .Train && transportType != .VlineTrainAndBus
+        {
+            return
+        }
+        
+        let APIURL = Constants.APIEndPoints.StationDetails + "\(stopID)/route_type/\(transportType)?stop_amenities=true&stop_accessibility=true&stop_contact=true&stop_ticket=true"
+            
+        guard let url: URL = PTVAPISupportClass.generateURL(withDevIDAndKey: APIURL) else
+        {
+            return
+        }
+            
+        let task = session.dataTask(with: url)
+        {   data, response, error in
+            guard self.standardParameterCheck(data, response, error) else
+            {
+                return
+            }
+                
+            if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+            {
+                if let stationDetails = StationDetails.decodeToInstance(rawJSON: jsonSerialised)
+                {
+                    self.delegate?.dataDecodingComplete(stationDetails)
+                }
+            }
+        }
+            
         task.resume()
     }
 }

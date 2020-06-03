@@ -37,6 +37,9 @@ struct Constants
         
         ///Base URL for retrieving all details, including name, of a direction, from a required direction ID parameter.
         static let DirectionDetailsForRouteType = "https://timetableapi.ptv.vic.gov.au/v3/directions/"
+        
+        ///Base URL to retrieve facility details for a stop. Requires stop ID and route_type. The latter must be Metro or Vline stop (route_type = 0 or 3). Also set stop_amenities, stop_accessibility, stop_contact, and stop_ticket parameters as true.
+        static let StationDetails = "https://timetableapi.ptv.vic.gov.au/v3/stops/"
     }
     
     struct MapViewConstants
