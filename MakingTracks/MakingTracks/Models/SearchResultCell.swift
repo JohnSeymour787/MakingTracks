@@ -21,13 +21,6 @@ class SearchResultCell: UITableViewCell
     @IBOutlet weak var stopDistanceLabel: UILabel!
     @IBOutlet weak var stopSuburbLabel: UILabel!
     @IBOutlet weak var stopNameLabel: UILabel!
-    
-    override func setSelected(_ selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     func configureCell(for result: TransportStopMapAnnotation)
     {
@@ -38,8 +31,10 @@ class SearchResultCell: UITableViewCell
         {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 2
-
+            formatter.minimumFractionDigits = 2
+            
             stopDistanceLabel.text = formatter.string(for: result.distance)
+            stopDistanceLabel.text? += " km"
             stopDistanceLabel.isHidden = false
         }
         transportTypeSettings(transportType: result.routeType)
@@ -50,15 +45,28 @@ class SearchResultCell: UITableViewCell
         switch transportType
         {
         case .Train:
-            layer.backgroundColor = Constants.UIConstants.ColorConstants.MetroBlue.cgColor
+            stopTypeImage.image = UIImage(named: "Metro")
+            stopNameLabel.textColor = Constants.UIConstants.ColorConstants.MetroBlue
+            
         case .Tram:
-            layer.backgroundColor = Constants.UIConstants.ColorConstants.TramGreen.cgColor
+            stopTypeImage.image = UIImage(named: "YarraTrams")
+            stopNameLabel.textColor = Constants.UIConstants.ColorConstants.TramGreen
+            
         case .Bus:
-            layer.backgroundColor = Constants.UIConstants.ColorConstants.BusOrange.cgColor
+            stopTypeImage.image = UIImage(named: "Bus")
+            stopNameLabel.textColor = Constants.UIConstants.ColorConstants.BusOrange
+            
         case .VLineTrainAndBus:
-            layer.backgroundColor = Constants.UIConstants.ColorConstants.VLinePurple.cgColor
+            stopTypeImage.image = UIImage(named: "VLine")
+            stopNameLabel.textColor = Constants.UIConstants.ColorConstants.VLinePurple
+            
         case .NightBus:
-            layer.backgroundColor = Constants.UIConstants.ColorConstants.NightBusBlue.cgColor
+            stopTypeImage.image = UIImage(named: "NightBus")
+            stopNameLabel.textColor = Constants.UIConstants.ColorConstants.NightBusBlue
         }
+        
+        //stopSuburbLabel.textColor = stopNameLabel.textColor
+        //stopDistanceLabel.textColor = stopNameLabel.textColor
+        
     }
 }

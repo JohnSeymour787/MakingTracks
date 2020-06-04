@@ -42,7 +42,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-    
+        
         NetworkController.shared.delegate = self
         mapView.delegate = self
         searchTextField.delegate = self

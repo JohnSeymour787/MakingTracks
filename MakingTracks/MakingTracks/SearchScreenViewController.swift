@@ -32,10 +32,15 @@ class SearchScreenViewController: UIViewController, UpdateTableDataDelegate
         controller.delegate = self
         dataView.dataSource = controller
         
-        searchTermLabel.text = "Results for: \"\(searchTerm!)\""
+        searchTermLabel.text = "Results for: \'\(searchTerm!)\'"
         
         //Make the controller initiate an API call to get the search results and provide the data for the dataView
         controller.getSearchResults(searchTerm: searchTerm)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    {
+        return .lightContent
     }
     
     @IBAction func backButtonPressed()

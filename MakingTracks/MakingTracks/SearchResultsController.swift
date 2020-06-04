@@ -24,7 +24,18 @@ class SearchResultsController: NSObject, NetworkControllerDelegate
         if let stopsArray = decodedData as? [TransportStopMapAnnotation]
         {
             searchResults = stopsArray
-            searchResults?.sort{$0.distance < $1.distance}
+            
+            //If the first (and thus all elements) have a distance value of 0, then location is turned off so the API couldn't get distance data.
+            if searchResults?.first?.distance == 0
+            {
+                //So, sort by transport type instead, as the search will be for the entire state
+                searchResults?.sort{$0.routeType < $1.routeType}
+            }
+            else
+            {
+                //Otherwise, a distance search is more appropriate
+                searchResults?.sort{$0.distance < $1.distance}
+            }
             
             delegate?.downloadComplete()
         }

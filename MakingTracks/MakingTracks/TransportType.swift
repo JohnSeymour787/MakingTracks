@@ -17,3 +17,11 @@ enum TransportType: Int
     case VLineTrainAndBus = 3
     case NightBus = 4
 }
+
+extension TransportType: Comparable
+{
+    static func < (lhs: TransportType, rhs: TransportType) -> Bool
+    {
+        return lhs.rawValue < rhs.rawValue
+    }
+}
