@@ -51,6 +51,7 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
         }
     }
     
+    @IBOutlet weak var titleViewBar: UIView!
     private func updateLabels()
     {
         guard let details = controller.stopDetails else
@@ -60,39 +61,21 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
         
         stationNameLabel.text = details.stopName + "Station"
         stationDescriptionLabel.text = details.stationDescription
+        operatingHoursLabel.text = "Operating hours: "
         
         if let operatingHours = details.operatingHours,
            operatingHours != "N"
         {
-            operatingHoursLabel.text = "Operating hours: \(operatingHours)"
-            operatingHoursLabel.isHidden = false
-            operatingHoursLabel.removeAllConstraints()
-            operatingHoursLabel.frame.size.height = 0
-
-        }
-        //MARK: TODO
-        //-Fix issues with using !, probs mainly just the lost property and phone number can be nil and not and empty string, then hide the labels
-        if let phone = details.phoneNumber,
-           phone != ""
-        {
-            phoneNumberLabel.text = "Phone Number: \(phone)"
-            phoneNumberLabel.isHidden = false
-            
+            operatingHoursLabel.text! += operatingHours
         }
         else
         {
-            phoneNumberLabel.frame.size.height = 0
-            //phoneNumberLabel.constraints
+            operatingHoursLabel.text! += "Not defined"
         }
-        
-        //let newLabel = UILabel(frame: CGRect(x: 20, y: 115, width: 374, height: 21))
-        
-        //let topConstraint = NSLayoutConstraint(item: newLabel, attribute: .top, relatedBy: .equal, toItem: nil, attribute: .bottom, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
-        
-        //newLabel.addConstraint(NSLayoutConstraint(item: <#T##Any#>, attribute:.top, relatedBy: .equal, toItem: <#T##Any?#>, attribute: ., multiplier: 1, constant: <#T##CGFloat#>))
-        
-        //operatingHoursLabel.is
-        
+
+        phoneNumberLabel.text = "Phone Number: \(details.phoneNumber != "" ? details.phoneNumber! : "Not available")"
+
+
         if let lostProperty = details.lostPropertyNumber
         {
             lostPropertyLabel.text = "Lost Property Number: \(lostProperty)"

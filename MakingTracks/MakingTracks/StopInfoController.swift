@@ -55,6 +55,9 @@ class StopInfoController: NSObject, NetworkControllerDelegate
             return
         }
         
+        //Sort the departures based on nearest-to-depart as earlier element in array. Although the API usually does this, sometimes it fails.
+        departuresArray?.sort(by: {$0.scheduledDepartureTime < $1.scheduledDepartureTime})
+        
         //Then need to make each element begin an API request (or use cache if available) to get its valid direction name string
         for departure in departuresArray!
         {
