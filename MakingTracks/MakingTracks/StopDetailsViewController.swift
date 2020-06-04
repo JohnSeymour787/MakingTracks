@@ -2,7 +2,7 @@
 //  StopDetailsViewController.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/29/20.
+//  Created by John on 5/29/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
@@ -51,6 +51,9 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
         }
     }
     
+    @IBOutlet weak var titleViewBar: UIView!
+    
+    //Sets the label texts of this view with the details from its controller's 'stopDetails' property.
     private func updateLabels()
     {
         guard let details = controller.stopDetails else
@@ -60,65 +63,19 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
         
         stationNameLabel.text = details.stopName + "Station"
         stationDescriptionLabel.text = details.stationDescription
-        
-        if let operatingHours = details.operatingHours,
-           operatingHours != "N"
-        {
-            operatingHoursLabel.text = "Operating hours: \(operatingHours)"
-            operatingHoursLabel.isHidden = false
-            operatingHoursLabel.removeAllConstraints()
-            operatingHoursLabel.frame.size.height = 0
+    
+        operatingHoursLabel.text = "Operating hours: \(details.operatingHours != "N" ? details.operatingHours! : "Not defined." )"
 
-        }
-        //MARK: TODO
-        //-Fix issues with using !, probs mainly just the lost property and phone number can be nil and not and empty string, then hide the labels
-        if let phone = details.phoneNumber,
-           phone != ""
-        {
-            phoneNumberLabel.text = "Phone Number: \(phone)"
-            phoneNumberLabel.isHidden = false
-            
-        }
-        else
-        {
-            phoneNumberLabel.frame.size.height = 0
-            //phoneNumberLabel.constraints
-        }
+        phoneNumberLabel.text = "Phone Number: \(details.phoneNumber != "" ? details.phoneNumber! : "Not available")"
+
+        lostPropertyLabel.text = "Lost Property Number: \(details.lostPropertyNumber != "" ? details.lostPropertyNumber! : "Not available.")"
         
-        //let newLabel = UILabel(frame: CGRect(x: 20, y: 115, width: 374, height: 21))
-        
-        //let topConstraint = NSLayoutConstraint(item: newLabel, attribute: .top, relatedBy: .equal, toItem: nil, attribute: .bottom, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
-        
-        //newLabel.addConstraint(NSLayoutConstraint(item: <#T##Any#>, attribute:.top, relatedBy: .equal, toItem: <#T##Any?#>, attribute: ., multiplier: 1, constant: <#T##CGFloat#>))
-        
-        //operatingHoursLabel.is
-        
-        if let lostProperty = details.lostPropertyNumber
-        {
-            lostPropertyLabel.text = "Lost Property Number: \(lostProperty)"
-            lostPropertyLabel.isHidden = false
-            phoneNumberLabel.removeAllConstraints()
-        }
-        
-        if let mykiZone = details.mykiZone
-        {
-            mykiZoneLabel.text = "Myki: " + details.mykiZone!
-        }
+        mykiZoneLabel.text = "Myki: \(details.mykiZone != "" ? details.mykiZone! : "No information.")"
         
         mykiMachineLabel.text = "Myki Machine: \(details.mykiMachine ? "Yes" : "No")"
         vlineTicketsLabel.text = "VLine Tickets: \(details.vlineTickets ? "Yes" : "No")"
         stairsLabel.text = "Stairs to platform: \(details.stairs ? "Yes" : "No")"
         elevatorLabel.text = "Elevator access to platform: \(details.elevatorAvailable ? "Yes" : "No")"
         toiletLabel.text = "Station toilet: \(details.toilet ? "Yes" : "No")"
-        
-    }
-
-}
-
-private extension UIView
-{
-    func removeAllConstraints()
-    {
-        removeConstraints(self.constraints)
     }
 }

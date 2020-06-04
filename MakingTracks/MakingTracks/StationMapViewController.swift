@@ -42,7 +42,7 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-    
+        
         NetworkController.shared.delegate = self
         mapView.delegate = self
         searchTextField.delegate = self
@@ -177,9 +177,7 @@ extension StationMapViewController: MKMapViewDelegate
  */
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
-    {
-        //let stopInfoController = StopInfoController()
-        
+    {    
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         //Use the main view controller to instantiate the ScheduledServices scene from it
