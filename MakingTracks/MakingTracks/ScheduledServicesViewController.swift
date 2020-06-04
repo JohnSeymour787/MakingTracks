@@ -54,8 +54,15 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         
         tableView.dataSource = controller
         tableView.delegate = self
+        
         //Set view title label text
-        stopNameLabel.text = stopName + "\(transportType == .Train ? "Station" : "")"
+        stopNameLabel.text = stopName
+        
+        //If this is a train station and doesn't already have the name 'station' in it (from the results API call), then add the word to the end
+        if transportType == .Train && !stopName.contains("Station")
+        {
+            stopNameLabel.text? += "Station"
+        }
         
         controller.delegate = self
         
@@ -84,10 +91,9 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
             viewController.controller = self.controller
         }
     }
-    
-
 }
 
+//Uses section headers for spacing between cell rows (sections)
 extension ScheduledServicesViewController: UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
@@ -95,6 +101,7 @@ extension ScheduledServicesViewController: UITableViewDelegate
         return CGFloat(Constants.UIConstants.TableViewSectionSpacing)
     }
     
+    //Header is a transparent UIView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
         let footerView = UIView()

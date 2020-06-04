@@ -223,7 +223,7 @@ class NetworkController
     func getStopDetails(stopID: Int, transportType: TransportType = .Train)
     {
         //Can only get stop details for Metro or Vline trains
-        if transportType != .Train && transportType != .VlineTrainAndBus
+        if transportType != .Train && transportType != .VLineTrainAndBus
         {
             return
         }
@@ -254,21 +254,27 @@ class NetworkController
         task.resume()
     }
     
-    func searchForStops(searchTerm: String, myLocation: CLLocationCoordinate2D?, transportType: TransportType = .Train)
+    ///Does an API search for all stops matching the search term. If the myLocation paramter is not nill, will include these coordinates in the API call for a nearby search with distance data. By default, searches across all transport types.
+    func searchForStops(searchTerm: String, myLocation: CLLocationCoordinate2D?, transportType: TransportType? = nil)
     {
         var APIURL = ""
         
         //If location data is available, then the search URL will use it to get distance data
         if let location = myLocation
         {
-            APIURL = Constants.APIEndPoints.StopSearch + "\(searchTerm)?route_types=\(transportType)&latitude=\(location.latitude)&longitude=\(location.longitude)&include_outlets=false"
+            APIURL = Constants.APIEndPoints.StopSearch + "\(searchTerm)?latitude=\(location.latitude)&longitude=\(location.longitude)&include_outlets=false"
         }
         else
         {
-            APIURL = Constants.APIEndPoints.StopSearch + "\(searchTerm)?route_types=\(transportType)&include_outlets=false"
+            APIURL = Constants.APIEndPoints.StopSearch + "\(searchTerm)?include_outlets=false"
+        }
+        
+        //If the transport type is defined for this search, add this as a final parameter.
+        if let transportType = transportType
+        {
+            APIURL += "&route_types=\(transportType)"
         }
 
-            
         if let task = dataTaskForAPIStops(urlString: APIURL)
         {
             task.resume()

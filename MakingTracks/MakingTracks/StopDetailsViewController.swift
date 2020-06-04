@@ -2,7 +2,7 @@
 //  StopDetailsViewController.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/29/20.
+//  Created by John on 5/29/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
@@ -52,6 +52,8 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
     }
     
     @IBOutlet weak var titleViewBar: UIView!
+    
+    //Sets the label texts of this view with the details from its controller's 'stopDetails' property.
     private func updateLabels()
     {
         guard let details = controller.stopDetails else
@@ -61,47 +63,19 @@ class StopDetailsViewController: UIViewController, UpdateTableDataDelegate
         
         stationNameLabel.text = details.stopName + "Station"
         stationDescriptionLabel.text = details.stationDescription
-        operatingHoursLabel.text = "Operating hours: "
-        
-        if let operatingHours = details.operatingHours,
-           operatingHours != "N"
-        {
-            operatingHoursLabel.text! += operatingHours
-        }
-        else
-        {
-            operatingHoursLabel.text! += "Not defined"
-        }
+    
+        operatingHoursLabel.text = "Operating hours: \(details.operatingHours != "N" ? details.operatingHours! : "Not defined." )"
 
         phoneNumberLabel.text = "Phone Number: \(details.phoneNumber != "" ? details.phoneNumber! : "Not available")"
 
-
-        if let lostProperty = details.lostPropertyNumber
-        {
-            lostPropertyLabel.text = "Lost Property Number: \(lostProperty)"
-            lostPropertyLabel.isHidden = false
-            phoneNumberLabel.removeAllConstraints()
-        }
+        lostPropertyLabel.text = "Lost Property Number: \(details.lostPropertyNumber != "" ? details.lostPropertyNumber! : "Not available.")"
         
-        if let mykiZone = details.mykiZone
-        {
-            mykiZoneLabel.text = "Myki: " + details.mykiZone!
-        }
+        mykiZoneLabel.text = "Myki: \(details.mykiZone != "" ? details.mykiZone! : "No information.")"
         
         mykiMachineLabel.text = "Myki Machine: \(details.mykiMachine ? "Yes" : "No")"
         vlineTicketsLabel.text = "VLine Tickets: \(details.vlineTickets ? "Yes" : "No")"
         stairsLabel.text = "Stairs to platform: \(details.stairs ? "Yes" : "No")"
         elevatorLabel.text = "Elevator access to platform: \(details.elevatorAvailable ? "Yes" : "No")"
         toiletLabel.text = "Station toilet: \(details.toilet ? "Yes" : "No")"
-        
-    }
-
-}
-
-private extension UIView
-{
-    func removeAllConstraints()
-    {
-        removeConstraints(self.constraints)
     }
 }

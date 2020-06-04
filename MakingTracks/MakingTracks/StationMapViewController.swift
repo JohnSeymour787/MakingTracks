@@ -177,9 +177,7 @@ extension StationMapViewController: MKMapViewDelegate
  */
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
-    {
-        //let stopInfoController = StopInfoController()
-        
+    {    
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         //Use the main view controller to instantiate the ScheduledServices scene from it

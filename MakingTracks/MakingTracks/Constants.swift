@@ -67,6 +67,15 @@ struct Constants
     {
         ///Represents the spacing between sections of a UITableView
         static let TableViewSectionSpacing = 20.0
+        
+        struct ColorConstants
+        {
+            static let MetroBlue = UIColor(displayP3Red: 0/255, green: 114/255, blue: 206/255, alpha: 1)
+            static let TramGreen = UIColor(displayP3Red: 120/255, green: 190/255, blue: 32/255, alpha: 1)
+            static let BusOrange = UIColor(displayP3Red: 255/255, green: 130/255, blue: 0/255, alpha: 1)
+            static let VLinePurple = UIColor(displayP3Red: 127/255, green: 13/255, blue: 130/255, alpha: 1)
+            static let NightBusBlue = UIColor(displayP3Red: 4/255, green: 28/255, blue: 44/255, alpha: 1)
+        }
     }
     
 }

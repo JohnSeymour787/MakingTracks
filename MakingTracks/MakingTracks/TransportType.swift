@@ -14,6 +14,6 @@ enum TransportType: Int
     case Train = 0
     case Tram = 1
     case Bus = 2
-    case VlineTrainAndBus = 3
+    case VLineTrainAndBus = 3
     case NightBus = 4
 }
