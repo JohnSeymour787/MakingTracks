@@ -212,14 +212,6 @@
                                 <color key="textColor" red="0.84313725490000002" green="0.82352941180000006" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="GGk-Ut-bzq">
-                                <rect key="frame" x="157" y="398" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="HUe-hM-05Y"/>
-                                    <constraint firstAttribute="width" constant="100" id="REc-fS-JVz"/>
-                                </constraints>
-                                <color key="color" red="0.20000000000000001" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfz-AD-hXh">
                                 <rect key="frame" x="265.66666666666669" y="54" width="128.33333333333331" height="32"/>
                                 <constraints>
@@ -233,6 +225,14 @@
                                     <action selector="stationDetailsButtonPressed" destination="Abe-pg-Gyw" eventType="touchUpInside" id="py0-b5-fwj"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="GGk-Ut-bzq">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="HUe-hM-05Y"/>
+                                    <constraint firstAttribute="width" constant="100" id="REc-fS-JVz"/>
+                                </constraints>
+                                <color key="color" red="0.20000000000000001" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

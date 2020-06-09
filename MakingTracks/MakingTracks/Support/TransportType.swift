@@ -22,7 +22,6 @@ extension TransportType: Comparable
 {
     static func < (lhs: TransportType, rhs: TransportType) -> Bool
     {
-        PTVAPISupportClass.generateURL(with: "")
         return lhs.rawValue < rhs.rawValue
     }
 }
