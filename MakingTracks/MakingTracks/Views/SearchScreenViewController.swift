@@ -10,19 +10,22 @@ import UIKit
 
 class SearchScreenViewController: UIViewController, UpdateTableDataDelegate
 {
+    //MARK: Properties
     
-    //New data is available from the dataView's data source
-    func downloadComplete()
+    private let controller = SearchResultsController()
+    var searchTerm: String!
+    override var preferredStatusBarStyle: UIStatusBarStyle
     {
-        DispatchQueue.main.async
-        {
-            self.dataView.reloadData()
-        }
+        return .lightContent
     }
     
-    var searchTerm: String!
-
-    let controller = SearchResultsController()
+    //MARK: Outlets
+    
+    @IBOutlet weak var noResultsLabel: UILabel!
+    @IBOutlet weak var searchTermLabel: UILabel!
+    @IBOutlet weak var dataView: UITableView!
+    
+    //MARK: Public Methods
     
     override func viewDidLoad()
     {
@@ -38,26 +41,30 @@ class SearchScreenViewController: UIViewController, UpdateTableDataDelegate
         controller.getSearchResults(searchTerm: searchTerm)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle
+    //New data is available from the dataView's data source
+    func downloadComplete()
     {
-        return .lightContent
+        DispatchQueue.main.async
+        {
+            self.noResultsLabel.isHidden = true
+            self.dataView.reloadData()
+            self.dataView.isHidden = false
+        }
     }
+
+    //MARK: Actions
     
     @IBAction func backButtonPressed()
     {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var searchTermLabel: UILabel!
-    
-    @IBOutlet weak var dataView: UITableView!
-    
 }
 
-
+//MARK: Table View Delegate
 //Uses section headers for spacing between cell rows (sections)
 extension SearchScreenViewController: UITableViewDelegate
 {
+    //Setting the gap between 'cells' (sections)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return CGFloat(Constants.UIConstants.TableViewSectionSpacing)

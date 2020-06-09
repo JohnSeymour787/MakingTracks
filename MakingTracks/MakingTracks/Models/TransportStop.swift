@@ -5,6 +5,7 @@
 //  Created by John on 5/21/20.
 //  Copyright © 2020 John. All rights reserved.
 //
+//  Purpose: Represents a transport stop's basic details and allows it to be viewed on a map.
 
 import Foundation
 import MapKit
@@ -36,8 +37,6 @@ class TransportStop: NSObject, MKAnnotation
         return name
     }
     
-    
-    
     ///Takes a serialised raw JSON 'Any' object and attempts to convert to an array of class instances. Returns nil if cannot find stops JSON array or returns empty array if cannot find stops. Otherwise, returns array of class instances.
     static func decodeToArray(rawJSON: Any) -> [TransportStop]?
     {
@@ -66,7 +65,7 @@ class TransportStop: NSObject, MKAnnotation
                    let lat = stop["stop_latitude"] as? Double,
                    let long = stop["stop_longitude"] as? Double
                 {
-                    //If calling NetworkController .getStops or .getAllStops then this will be nil
+                    //If calling NetworkController .getStops or .getAllStops then this will be nil. Converting Distance in meters to kilometers
                     let distance = (stop["stop_distance"] as? Double ?? 0.0)/1000
                     
                     itemToAdd = TransportStop(name: name, suburb: suburb, stopID: stopID, routeType: routeType, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), distance: distance)

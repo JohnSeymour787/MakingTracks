@@ -68,6 +68,7 @@ struct Constants
         ///Represents the spacing between sections of a UITableView
         static let TableViewSectionSpacing = 20.0
         
+        ///UIColor objects representing official PTV transport type colors
         struct ColorConstants
         {
             static let MetroBlue = UIColor(displayP3Red: 0/255, green: 114/255, blue: 206/255, alpha: 1)

@@ -5,6 +5,7 @@
 //  Created by John on 5/29/20.
 //  Copyright © 2020 John. All rights reserved.
 //
+//  Purpose: Represents a single scheduled service for a specific stop, route, and direction ID.
 
 import Foundation
 
@@ -30,7 +31,7 @@ class DepartureDetails
         let formatter = DateFormatter()
         
         formatter.dateFormat = "h:mm a"
-        //Cannot use this because working on a remote desktop based in San Francisco!
+        //V Cannot use this because working on a remote desktop based in San Francisco!
         //formatter.timeZone = .current
         
         formatter.timeZone = TimeZone(identifier: "Australia/Melbourne")

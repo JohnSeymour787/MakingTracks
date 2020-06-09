@@ -13,8 +13,17 @@ import UIKit
 
 class StopInfoController: NSObject, NetworkControllerDelegate
 {
+    //MARK: Properties
+    
     ///Remembers the number of elements in the departuresArray that have updated their direction name properties. Only when this value matches the size of the array are all updates complete and this controller should then signal the ScheduledServicesViewController to load its tableView data.
     private var completedDirectionUpdates = 0
+    private var departuresArray: [DepartureDetails]?
+    
+    var delegate: UpdateTableDataDelegate?
+    var stopDetails: StationDetails?
+    
+    
+    //MARK: Methods
     
     func dataDecodingComplete(_ decodedData: Any)
     {
@@ -60,11 +69,6 @@ class StopInfoController: NSObject, NetworkControllerDelegate
         }
     }
     
-
-    var delegate: UpdateTableDataDelegate?
-    private var departuresArray: [DepartureDetails]?
-    var stopDetails: StationDetails?
-    
     ///Calls the API to get an array of DepartureDetails for the given stop
     func beginStopDataRetrieval(stopID: Int, transportType: TransportType)
     {
@@ -80,12 +84,17 @@ class StopInfoController: NSObject, NetworkControllerDelegate
     }
 }
 
-
+//MARK: DataSource Extension
 extension StopInfoController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return departuresArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -99,11 +108,6 @@ extension StopInfoController: UITableViewDataSource
         }
         
         return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return departuresArray?.count ?? 0
     }
 }
 

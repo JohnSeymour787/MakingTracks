@@ -5,36 +5,19 @@
 //  Created by John on 5/15/20.
 //  Copyright © 2020 John. All rights reserved.
 //
-/*
-    TODO:
-    -Implementation for PTVAPIStatusUpdate method
-        -Should have a popup if the healthcheck fails (do in main queue)
-    -textFieldShouldReturn() delegate method should start a segue to the search screen, passing it the text in the textfield
-    -Remove old MapViewDelegate commented function's code
- */
 
 import UIKit
 import MapKit
 
 class StationMapViewController: UIViewController, NetworkControllerDelegate
 {
-   
-    //Update the mapView's annotations with this decoded data, if it is an array of MKAnnotations.
-    func dataDecodingComplete(_ decodedData: Any)
-    {
-        guard let annotations = decodedData as? [MKAnnotation] else
-        {
-            return
-        }
-        
-        DispatchQueue.main.async
-        {
-            self.mapView.addAnnotations(annotations)
-        }
-    }
+    //MARK: Outlets
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    
+    //MARK: Public Methods
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -45,10 +28,10 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
         //Registering the MKAnnotationView class to be the default annotation view used
         mapView.register(TransportStopMapView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
+        //Set the initial camera position of the map, but if location tracking occurs later, then will track the user
         mapView.camera = Constants.MapViewConstants.DefaultCamera
         mapView.setUserTrackingMode(.follow, animated: true)
-        
-        NetworkController.shared.APIhealthCheck()
         
         //Getting all Metro Trains stops, will call addMapAnnotations() delegate method of this class when done
         NetworkController.shared.getAllStops()
@@ -67,9 +50,23 @@ class StationMapViewController: UIViewController, NetworkControllerDelegate
         
         LocationController.shared.stopLocationServices()
     }
+    
+    //Update the mapView's annotations with this decoded data, if it is an array of MKAnnotations.
+    func dataDecodingComplete(_ decodedData: Any)
+    {
+        guard let annotations = decodedData as? [MKAnnotation] else
+        {
+            return
+        }
+        
+        DispatchQueue.main.async
+        {
+            self.mapView.addAnnotations(annotations)
+        }
+    }
 }
 
-
+//MARK: Text Field Delegate
 extension StationMapViewController: UITextFieldDelegate
 {
     //If touches occur off the keyboard, then close it and reset the search bar text
@@ -78,20 +75,7 @@ extension StationMapViewController: UITextFieldDelegate
         searchTextField.resignFirstResponder()
         searchTextField.text = ""
     }
-    
-    
-    
 
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let viewController = segue.destination as? SearchScreenViewController
-        {
-            viewController.searchTerm = searchTextField.text
-        }
-    }
-
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
@@ -105,73 +89,19 @@ extension StationMapViewController: UITextFieldDelegate
         //Text field doesn't need to process the pressing of the button
         return false
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let viewController = segue.destination as? SearchScreenViewController
+        {
+            viewController.searchTerm = searchTextField.text
+        }
+    }
 }
 
+//MARK: Map View Delegate
 extension StationMapViewController: MKMapViewDelegate
 {
-    /*
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-    {
-        var annotationView = MKAnnotationView()
-        
-        guard let annotation = annotation as? TransportStopMapAnnotation else
-        {
-            return nil
-        }
-        
-        //If a pin of this identifier already exists, use it
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView
-        {
-            annotationView = dequeuedView
-        }
-        //Otherwise, need to create new annotation
-        else
-        {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        }
-        
-        /*/
-        var annotationView = MKPinAnnotationView()
-        
-        guard let annotation = annotation as? TransportStopMapAnnotation else
-        {
-            return nil
-        }
-        
-        //If a pin of this identifier already exists, use it
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKPinAnnotationView
-        {
-            annotationView = dequeuedView
-        }
-        //Otherwise, need to create new annotation
-        else
-        {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation.identifier)
-        }
- */
-        /*annotationView.t
-        
-        //annotationView.pinTintColor = .blue
-        
-        //annotationView.image = UIImage
-        
-        annotationView.canShowCallout = true
-        
-        let title = UILabel()
-        title.numberOfLines = 0
-        title.font = UIFont.preferredFont(forTextStyle: .callout)
-        //title.text = "Title"
-        annotationView.largeContentTitle = "Things"
-        annotationView.detailCalloutAccessoryView = title
-        //annotationView.tit
-        //annotationView.leftCalloutAccessoryView
-        //annotationView.rightCalloutAccessoryView
-        return annotationView
-        
-    }
-    */
- */
-
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {    
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

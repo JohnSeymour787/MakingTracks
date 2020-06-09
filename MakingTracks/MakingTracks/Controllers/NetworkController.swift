@@ -33,6 +33,7 @@ class NetworkController
         return URLSession(configuration: config, delegate: nil, delegateQueue: nil)
     }()
     
+    //Stores the direction ID and direction name to possibly save future API calls
     private var directionsCache: [Int: String] = [:]
     
     //MARK: Private Methods

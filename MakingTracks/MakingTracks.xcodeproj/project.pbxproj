@@ -196,10 +196,10 @@
 		B9B336EE24778B2300063EDE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */,
 				B9B336EC24777C9B00063EDE /* TransportStop.swift */,
 				B9F1D8932481372500326E27 /* DepartureDetails.swift */,
 				B970B9C024823DB5004CD9B7 /* StationDetails.swift */,
+				B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

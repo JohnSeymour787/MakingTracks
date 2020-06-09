@@ -5,6 +5,7 @@
 //  Created by John on 5/30/20.
 //  Copyright © 2020 John. All rights reserved.
 //
+//  Purpose: Represents the details of a station.
 
 import Foundation
 
