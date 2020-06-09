@@ -78,7 +78,7 @@ class NetworkController
                
             if let jsonSerialised = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
             {
-                if let stopsArray = TransportStopMapAnnotation.decodeToArray(rawJSON: jsonSerialised)
+                if let stopsArray = TransportStop.decodeToArray(rawJSON: jsonSerialised)
                 {
                     self.delegate?.dataDecodingComplete(stopsArray)
                 }
@@ -112,7 +112,7 @@ class NetworkController
                 //Converting to the Decodable-conforming PTVAPIHealthCheckModel class
                 if let APIHealth = try? decoder.decode(PTVAPIHealthCheckModel.self, from: data!)
                 {
-                    self.delegate?.PTVAPIStatusUpdate(healthCheck: APIHealth)
+                    self.delegate?.dataDecodingComplete(APIHealth)
                 }
         //  }
         }

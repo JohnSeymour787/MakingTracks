@@ -12,16 +12,11 @@ import UIKit
 class SearchResultsController: NSObject, NetworkControllerDelegate
 {
     var delegate: UpdateTableDataDelegate?
-    private var searchResults: [TransportStopMapAnnotation]?
-    
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
-    {
-        
-    }
+    private var searchResults: [TransportStop]?
     
     func dataDecodingComplete(_ decodedData: Any)
     {
-        if let stopsArray = decodedData as? [TransportStopMapAnnotation]
+        if let stopsArray = decodedData as? [TransportStop]
         {
             searchResults = stopsArray
             
@@ -47,7 +42,7 @@ class SearchResultsController: NSObject, NetworkControllerDelegate
         NetworkController.shared.searchForStops(searchTerm: searchTerm, myLocation: LocationController.shared.lastRecordedCoordinate)
     }
     
-    func currentResult(index: Int) -> TransportStopMapAnnotation?
+    func currentResult(index: Int) -> TransportStop?
     {
         guard index >= 0,
               searchResults != nil,
@@ -80,9 +75,7 @@ extension SearchResultsController: UITableViewDataSource
         
         if searchResults != nil
         {
-
             cell.configureCell(for: searchResults![indexPath.section])
-
         }
         
         return cell

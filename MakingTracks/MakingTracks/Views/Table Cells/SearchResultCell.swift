@@ -2,7 +2,7 @@
 //  SearchResultsCell.swift
 //  MakingTracks
 //
-//  Created by user169372 on 6/4/20.
+//  Created by John on 6/4/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class SearchResultCell: UITableViewCell
     @IBOutlet weak var stopSuburbLabel: UILabel!
     @IBOutlet weak var stopNameLabel: UILabel!
 
-    func configureCell(for result: TransportStopMapAnnotation)
+    func configureCell(for result: TransportStop)
     {
         stopNameLabel.text = result.name
         stopSuburbLabel.text = result.suburb
@@ -64,9 +64,5 @@ class SearchResultCell: UITableViewCell
             stopTypeImage.image = UIImage(named: "NightBus")
             stopNameLabel.textColor = Constants.UIConstants.ColorConstants.NightBusBlue
         }
-        
-        //stopSuburbLabel.textColor = stopNameLabel.textColor
-        //stopDistanceLabel.textColor = stopNameLabel.textColor
-        
     }
 }

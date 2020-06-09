@@ -2,14 +2,14 @@
 //  StopMapAnnotation.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/21/20.
+//  Created by John on 5/21/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
 import Foundation
 import MapKit
 
-class TransportStopMapAnnotation: NSObject, MKAnnotation
+class TransportStop: NSObject, MKAnnotation
 {
     let coordinate: CLLocationCoordinate2D
     let name: String
@@ -39,7 +39,7 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
     
     
     ///Takes a serialised raw JSON 'Any' object and attempts to convert to an array of class instances. Returns nil if cannot find stops JSON array or returns empty array if cannot find stops. Otherwise, returns array of class instances.
-    static func decodeToArray(rawJSON: Any) -> [TransportStopMapAnnotation]?
+    static func decodeToArray(rawJSON: Any) -> [TransportStop]?
     {
         //Need to get the inner "stops" array from the JSON server response
         guard
@@ -50,8 +50,8 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
             return nil
         }
 
-        var result: [TransportStopMapAnnotation] = []
-        var itemToAdd: TransportStopMapAnnotation
+        var result: [TransportStop] = []
+        var itemToAdd: TransportStop
         
         for element in stopsArray
         {
@@ -69,7 +69,7 @@ class TransportStopMapAnnotation: NSObject, MKAnnotation
                     //If calling NetworkController .getStops or .getAllStops then this will be nil
                     let distance = (stop["stop_distance"] as? Double ?? 0.0)/1000
                     
-                    itemToAdd = TransportStopMapAnnotation(name: name, suburb: suburb, stopID: stopID, routeType: routeType, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), distance: distance)
+                    itemToAdd = TransportStop(name: name, suburb: suburb, stopID: stopID, routeType: routeType, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), distance: distance)
                     result.append(itemToAdd)
                 }
             }

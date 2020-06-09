@@ -18,11 +18,7 @@ import MapKit
 
 class StationMapViewController: UIViewController, NetworkControllerDelegate
 {
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
-    {
-        
-    }
-    
+   
     //Update the mapView's annotations with this decoded data, if it is an array of MKAnnotations.
     func dataDecodingComplete(_ decodedData: Any)
     {
@@ -184,7 +180,7 @@ extension StationMapViewController: MKMapViewDelegate
         let viewController = storyboard.instantiateViewController(identifier: "ScheduledServicesScreen") as! ScheduledServicesViewController
         
         //If this is a transport annotation that had its callout pressed
-        if let stopAnnotation = view.annotation as? TransportStopMapAnnotation
+        if let stopAnnotation = view.annotation as? TransportStop
         {
             //Set the viewController's properties and present it in full-screen view
             viewController.stopID = stopAnnotation.stopID

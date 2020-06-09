@@ -11,6 +11,5 @@ import MapKit
 
 protocol NetworkControllerDelegate: class
 {
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
     func dataDecodingComplete(_ decodedData: Any)
 }

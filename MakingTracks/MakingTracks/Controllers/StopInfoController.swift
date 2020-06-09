@@ -16,11 +16,6 @@ class StopInfoController: NSObject, NetworkControllerDelegate
     ///Remembers the number of elements in the departuresArray that have updated their direction name properties. Only when this value matches the size of the array are all updates complete and this controller should then signal the ScheduledServicesViewController to load its tableView data.
     private var completedDirectionUpdates = 0
     
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
-    {
-        
-    }
-    
     func dataDecodingComplete(_ decodedData: Any)
     {
         //If the NetworkController calls this delegate method with an empty string then one of the departure elements in the array has had its name updated

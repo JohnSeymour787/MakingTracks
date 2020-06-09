@@ -16,7 +16,7 @@ class TransportStopMapView: MKAnnotationView
         willSet
         {
             //New value is passed as part of the willSet
-            guard let transportStopAnnotation = newValue as? TransportStopMapAnnotation else
+            guard let transportStopAnnotation = newValue as? TransportStop else
             {
                 return
             }
