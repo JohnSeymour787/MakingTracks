@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B942D8CE248F1F250081D642 /* PTVAPISupportClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B942D8CD248F1F250081D642 /* PTVAPISupportClass.m */; };
 		B94F00E02480EB95006106D2 /* ScheduledServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */; };
 		B970B9BF248238DD004CD9B7 /* StopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */; };
 		B970B9C124823DB5004CD9B7 /* StationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970B9C024823DB5004CD9B7 /* StationDetails.swift */; };
+		B993472F24892AEF001192D7 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B993472E24892AEF001192D7 /* SearchResultCell.swift */; };
 		B99804DF2487596B0026527B /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99804DE2487596B0026527B /* SearchScreenViewController.swift */; };
 		B99804E1248759CD0026527B /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99804E0248759CD0026527B /* SearchResultsController.swift */; };
 		B9A8F658246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */; };
 		B9A8F65A246FAAFD00A13CA9 /* NetworkControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F659246FAAFD00A13CA9 /* NetworkControllerTests.swift */; };
 		B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */; };
 		B9B336EB24776D8200063EDE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B336EA24776D8200063EDE /* MapKit.framework */; };
-		B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */; };
+		B9B336ED24777C9B00063EDE /* TransportStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B336EC24777C9B00063EDE /* TransportStop.swift */; };
 		B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */; };
 		B9B93E62246F6F5C007F4E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */; };
 		B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */; };
@@ -26,7 +28,6 @@
 		B9B93E6E246F6F5D007F4E10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B93E6C246F6F5D007F4E10 /* LaunchScreen.storyboard */; };
 		B9B93E79246F6F5D007F4E10 /* MakingTracksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E78246F6F5D007F4E10 /* MakingTracksTests.swift */; };
 		B9B93E84246F6F5D007F4E10 /* StationMapScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E83246F6F5D007F4E10 /* StationMapScreenUITests.swift */; };
-		B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E94246F7CFA007F4E10 /* PTVAPISupportClass.m */; };
 		B9B93E97246F8CA6007F4E10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E96246F8CA6007F4E10 /* Constants.swift */; };
 		B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E98246F9069007F4E10 /* TransportType.swift */; };
 		B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B93E9A246F9169007F4E10 /* NetworkController.swift */; };
@@ -56,16 +57,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B942D8CC248F1F250081D642 /* MakingTracks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MakingTracks-Bridging-Header.h"; path = "MakingTracks/Support/ObjectiveC/MakingTracks-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		B942D8CD248F1F250081D642 /* PTVAPISupportClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTVAPISupportClass.m; sourceTree = "<group>"; };
+		B942D8D2248F20210081D642 /* PTVAPISupportClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTVAPISupportClass.h; sourceTree = "<group>"; };
 		B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledServicesViewController.swift; sourceTree = "<group>"; };
 		B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopDetailsViewController.swift; sourceTree = "<group>"; };
 		B970B9C024823DB5004CD9B7 /* StationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetails.swift; sourceTree = "<group>"; };
+		B993472E24892AEF001192D7 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B99804DE2487596B0026527B /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
 		B99804E0248759CD0026527B /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTVAPIHealthCheckModel.swift; sourceTree = "<group>"; };
 		B9A8F659246FAAFD00A13CA9 /* NetworkControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerTests.swift; sourceTree = "<group>"; };
 		B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkControllerDelegate.swift; sourceTree = "<group>"; };
 		B9B336EA24776D8200063EDE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopMapAnnotation.swift; sourceTree = "<group>"; };
+		B9B336EC24777C9B00063EDE /* TransportStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStop.swift; sourceTree = "<group>"; };
 		B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopMapView.swift; sourceTree = "<group>"; };
 		B9B93E5E246F6F5C007F4E10 /* MakingTracks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakingTracks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,9 +86,6 @@
 		B9B93E7F246F6F5D007F4E10 /* MakingTracksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MakingTracksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B93E83246F6F5D007F4E10 /* StationMapScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapScreenUITests.swift; sourceTree = "<group>"; };
 		B9B93E85246F6F5D007F4E10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B9B93E92246F7CCE007F4E10 /* PTVAPISupportClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTVAPISupportClass.h; sourceTree = "<group>"; };
-		B9B93E93246F7CFA007F4E10 /* MakingTracks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MakingTracks-Bridging-Header.h"; sourceTree = "<group>"; };
-		B9B93E94246F7CFA007F4E10 /* PTVAPISupportClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTVAPISupportClass.m; sourceTree = "<group>"; };
 		B9B93E96246F8CA6007F4E10 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9B93E98246F9069007F4E10 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		B9B93E9A246F9169007F4E10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -121,11 +123,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B94F00DD2480EB7C006106D2 /* New Group */ = {
+		B942D8C4248F11F60081D642 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9F1D8912481330800326E27 /* StopInfoController.swift */,
+				B99804E0248759CD0026527B /* SearchResultsController.swift */,
+				B9B93E9A246F9169007F4E10 /* NetworkController.swift */,
+				B9E27C1724808D3B000DE575 /* LocationController.swift */,
 			);
-			path = "New Group";
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B942D8C5248F12730081D642 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B9B93E96246F8CA6007F4E10 /* Constants.swift */,
+				B9B93E98246F9069007F4E10 /* TransportType.swift */,
+				B942D8C6248F12C50081D642 /* Delegates */,
+				B9B93E91246F7C35007F4E10 /* ObjectiveC */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		B942D8C6248F12C50081D642 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */,
+				B9F1D89724814E2D00326E27 /* UpdateTableDataDelegate.swift */,
+				B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		B942D8C7248F136E0081D642 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */,
+				B993472E24892AEF001192D7 /* SearchResultCell.swift */,
+			);
+			path = "Table Cells";
+			sourceTree = "<group>";
+		};
+		B942D8C8248F13F60081D642 /* Map Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */,
+			);
+			path = "Map Annotations";
+			sourceTree = "<group>";
+		};
+		B94F00DD2480EB7C006106D2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B9B93E65246F6F5C007F4E10 /* StationMapViewController.swift */,
+				B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */,
+				B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */,
+				B99804DE2487596B0026527B /* SearchScreenViewController.swift */,
+				B942D8C7248F136E0081D642 /* Table Cells */,
+				B942D8C8248F13F60081D642 /* Map Annotations */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B9B336E924776D8200063EDE /* Frameworks */ = {
@@ -139,15 +196,10 @@
 		B9B336EE24778B2300063EDE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */,
-				B9A8F65B246FAC4B00A13CA9 /* NetworkControllerDelegate.swift */,
-				B9B336EC24777C9B00063EDE /* TransportStopMapAnnotation.swift */,
-				B9B336EF2477B1E100063EDE /* TransportStopMapView.swift */,
-				B9E27C19248093AC000DE575 /* LocationControllerDelegate.swift */,
+				B9B336EC24777C9B00063EDE /* TransportStop.swift */,
 				B9F1D8932481372500326E27 /* DepartureDetails.swift */,
-				B9F1D89524813CAF00326E27 /* DepartureDetailsCell.swift */,
-				B9F1D89724814E2D00326E27 /* UpdateTableDataDelegate.swift */,
 				B970B9C024823DB5004CD9B7 /* StationDetails.swift */,
+				B9A8F657246FA02900A13CA9 /* PTVAPIHealthCheckModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,25 +228,16 @@
 		B9B93E60246F6F5C007F4E10 /* MakingTracks */ = {
 			isa = PBXGroup;
 			children = (
-				B94F00DD2480EB7C006106D2 /* New Group */,
 				B9B336EE24778B2300063EDE /* Models */,
-				B9B93E91246F7C35007F4E10 /* ObjectiveC */,
-				B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */,
-				B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */,
+				B94F00DD2480EB7C006106D2 /* Views */,
+				B942D8C4248F11F60081D642 /* Controllers */,
+				B942D8C5248F12730081D642 /* Support */,
 				B9B93E67246F6F5C007F4E10 /* Main.storyboard */,
 				B9B93E6A246F6F5D007F4E10 /* Assets.xcassets */,
+				B9B93E61246F6F5C007F4E10 /* AppDelegate.swift */,
+				B9B93E63246F6F5C007F4E10 /* SceneDelegate.swift */,
 				B9B93E6C246F6F5D007F4E10 /* LaunchScreen.storyboard */,
 				B9B93E6F246F6F5D007F4E10 /* Info.plist */,
-				B9B93E96246F8CA6007F4E10 /* Constants.swift */,
-				B9B93E98246F9069007F4E10 /* TransportType.swift */,
-				B9B93E65246F6F5C007F4E10 /* StationMapViewController.swift */,
-				B9B93E9A246F9169007F4E10 /* NetworkController.swift */,
-				B9E27C1724808D3B000DE575 /* LocationController.swift */,
-				B94F00DE2480EB95006106D2 /* ScheduledServicesViewController.swift */,
-				B9F1D8912481330800326E27 /* StopInfoController.swift */,
-				B970B9BE248238DD004CD9B7 /* StopDetailsViewController.swift */,
-				B99804DE2487596B0026527B /* SearchScreenViewController.swift */,
-				B99804E0248759CD0026527B /* SearchResultsController.swift */,
 			);
 			path = MakingTracks;
 			sourceTree = "<group>";
@@ -221,9 +264,9 @@
 		B9B93E91246F7C35007F4E10 /* ObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
-				B9B93E92246F7CCE007F4E10 /* PTVAPISupportClass.h */,
-				B9B93E94246F7CFA007F4E10 /* PTVAPISupportClass.m */,
-				B9B93E93246F7CFA007F4E10 /* MakingTracks-Bridging-Header.h */,
+				B942D8CD248F1F250081D642 /* PTVAPISupportClass.m */,
+				B942D8CC248F1F250081D642 /* MakingTracks-Bridging-Header.h */,
+				B942D8D2248F20210081D642 /* PTVAPISupportClass.h */,
 			);
 			path = ObjectiveC;
 			sourceTree = "<group>";
@@ -296,7 +339,7 @@
 				TargetAttributes = {
 					B9B93E5D246F6F5C007F4E10 = {
 						CreatedOnToolsVersion = 11.4.1;
-						LastSwiftMigration = 1140;
+						LastSwiftMigration = 1150;
 					};
 					B9B93E73246F6F5D007F4E10 = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -372,16 +415,17 @@
 				B9B93E99246F9069007F4E10 /* TransportType.swift in Sources */,
 				B99804E1248759CD0026527B /* SearchResultsController.swift in Sources */,
 				B99804DF2487596B0026527B /* SearchScreenViewController.swift in Sources */,
+				B993472F24892AEF001192D7 /* SearchResultCell.swift in Sources */,
 				B9B336F02477B1E100063EDE /* TransportStopMapView.swift in Sources */,
-				B9B93E95246F7CFA007F4E10 /* PTVAPISupportClass.m in Sources */,
 				B9B93E9B246F9169007F4E10 /* NetworkController.swift in Sources */,
 				B9F1D89624813CAF00326E27 /* DepartureDetailsCell.swift in Sources */,
-				B9B336ED24777C9B00063EDE /* TransportStopMapAnnotation.swift in Sources */,
+				B9B336ED24777C9B00063EDE /* TransportStop.swift in Sources */,
 				B970B9BF248238DD004CD9B7 /* StopDetailsViewController.swift in Sources */,
 				B9A8F65C246FAC4B00A13CA9 /* NetworkControllerDelegate.swift in Sources */,
 				B9B93E64246F6F5C007F4E10 /* SceneDelegate.swift in Sources */,
 				B94F00E02480EB95006106D2 /* ScheduledServicesViewController.swift in Sources */,
 				B9E27C1A248093AC000DE575 /* LocationControllerDelegate.swift in Sources */,
+				B942D8CE248F1F250081D642 /* PTVAPISupportClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +608,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = John.MakingTracks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MakingTracks/ObjectiveC/MakingTracks-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MakingTracks/Support/ObjectiveC/MakingTracks-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -584,7 +629,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = John.MakingTracks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MakingTracks/ObjectiveC/MakingTracks-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MakingTracks/Support/ObjectiveC/MakingTracks-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

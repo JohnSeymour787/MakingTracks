@@ -5,23 +5,26 @@
 //  Created by John on 6/2/20.
 //  Copyright © 2020 John. All rights reserved.
 //
+//  Purpose: Acts as the Controller and table data source for the Search Results screen.
+//  Responsible for calling the NetworkController to get search results from the API.
 
 import Foundation
 import UIKit
 
 class SearchResultsController: NSObject, NetworkControllerDelegate
 {
-    var delegate: UpdateTableDataDelegate?
-    private var searchResults: [TransportStopMapAnnotation]?
+    //MARK: Properties
     
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
-    {
-        
-    }
+    private var searchResults: [TransportStop]?
+    var delegate: UpdateTableDataDelegate?
+    
+    //MARK: Methods
     
     func dataDecodingComplete(_ decodedData: Any)
     {
-        if let stopsArray = decodedData as? [TransportStopMapAnnotation]
+        //If no search results then don't update the array or call the .downloadComplete delegate method
+        if let stopsArray = decodedData as? [TransportStop],
+            stopsArray.count != 0
         {
             searchResults = stopsArray
             
@@ -47,7 +50,7 @@ class SearchResultsController: NSObject, NetworkControllerDelegate
         NetworkController.shared.searchForStops(searchTerm: searchTerm, myLocation: LocationController.shared.lastRecordedCoordinate)
     }
     
-    func currentResult(index: Int) -> TransportStopMapAnnotation?
+    func currentResult(index: Int) -> TransportStop?
     {
         guard index >= 0,
               searchResults != nil,
@@ -61,7 +64,7 @@ class SearchResultsController: NSObject, NetworkControllerDelegate
     }
 }
 
-
+//MARK: DataSource Extension
 extension SearchResultsController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -80,9 +83,7 @@ extension SearchResultsController: UITableViewDataSource
         
         if searchResults != nil
         {
-
             cell.configureCell(for: searchResults![indexPath.section])
-
         }
         
         return cell

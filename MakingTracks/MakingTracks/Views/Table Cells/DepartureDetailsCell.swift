@@ -2,7 +2,7 @@
 //  DepartureDetailsCell.swift
 //  MakingTracks
 //
-//  Created by user169372 on 5/29/20.
+//  Created by John on 5/29/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
@@ -11,21 +11,22 @@ import UIKit
 
 class DepartureDetailsCell: UITableViewCell
 {
+    //MARK: Outlets
+    
+    @IBOutlet weak var platformNumberLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var remainingDepartureTimeLabel: UILabel!
+    @IBOutlet weak var atPlatformLabel: UILabel!
+    @IBOutlet weak var departureTime: UILabel!
+    
+    //MARK: Public Methods
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
     }
     
-    @IBOutlet weak var platformNumberLabel: UILabel!
-    
-    @IBOutlet weak var directionLabel: UILabel!
-    
-    @IBOutlet weak var remainingDepartureTimeLabel: UILabel!
-    
-    @IBOutlet weak var atPlatformLabel: UILabel!
-    
-    @IBOutlet weak var departureTime: UILabel!
-    
+    ///Sets all label texts with the details of a given departure
     func setLabels(details: DepartureDetails)
     {
         platformNumberLabel.text = "Platform: \(details.platformNumber)"
@@ -37,6 +38,5 @@ class DepartureDetailsCell: UITableViewCell
         directionLabel.text = details.directionString
         
         departureTime.text = details.departureTimeString
-        
     }
 }

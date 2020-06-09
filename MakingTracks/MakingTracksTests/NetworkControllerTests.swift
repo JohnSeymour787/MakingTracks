@@ -11,10 +11,6 @@ import MapKit
 @testable import MakingTracks
 
 class NetworkControllerTests: XCTestCase, NetworkControllerDelegate {
-    func addMapAnnotations(_ annotations: [MKAnnotation]) {
-        
-    }
-    
     
     //Expectation needed to test call to NetworkControllerDelegate method which is called in a callback
     private var healthCheckExpectation: XCTestExpectation?
@@ -34,17 +30,25 @@ class NetworkControllerTests: XCTestCase, NetworkControllerDelegate {
         healthCheckExpectation = expectation(description: "Health check fetch")
         NetworkController.shared.delegate = self
         
-        XCTAssertTrue(NetworkController.shared.APIhealthCheck())
+        NetworkController.shared.APIhealthCheck()
         
         waitForExpectations(timeout: 10.0) {error in
-            print(error?.localizedDescription)
+            print(error?.localizedDescription as Any)
         }
     }
     //NetworkControllerDelegate method, called from the completion handler of NetworkController.shared.APIhealthCheck() from above test
-    func PTVAPIStatusUpdate(healthCheck: PTVAPIHealthCheckModel)
+    func dataDecodingComplete(_ decodedData: Any)
     {
-        XCTAssertTrue(healthCheck.securityTokenOK)
-        healthCheckExpectation?.fulfill()
+        if let healthCheck = decodedData as? PTVAPIHealthCheckModel
+        {
+            XCTAssertTrue(healthCheck.securityTokenOK)
+            healthCheckExpectation?.fulfill()
+        }
+        else
+        {
+            XCTFail()
+        }
+
     }
 
     

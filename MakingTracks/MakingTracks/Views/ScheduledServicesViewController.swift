@@ -10,38 +10,25 @@ import UIKit
 
 class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
 {
-    //When the download is complete, hide the activity indicator, unhide the tableView, and reload the data
-    func downloadComplete()
-    {
-        DispatchQueue.main.async
-        {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-            self.tableView.reloadData()
-            self.tableView.isHidden = false
-        }
-    }
+    //MARK: Properties
     
+    private let controller = StopInfoController()
     var stopID: Int!
     var stopName: String!
     var transportType: TransportType!
-    let controller = StopInfoController()
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var stopNameLabel: UILabel!
-    
-    @IBOutlet weak var stationDetailsButton: UIButton!
-    
-    @IBAction func stationDetailsButtonPressed()
-    {
-        performSegue(withIdentifier: "stationDetailsSegue", sender: nil)
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle
     {
         return .lightContent
     }
+    
+    //MARK: Outlets
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stopNameLabel: UILabel!
+    @IBOutlet weak var stationDetailsButton: UIButton!
+    
+    //MARK: Public Methods
     
     override func viewDidLoad()
     {
@@ -69,11 +56,17 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
         //Guaranteed to have a stopID and transportType when loads
         controller.beginStopDataRetrieval(stopID: stopID, transportType: transportType)
     }
-
     
-    @IBAction func backToMapButton()
+    //When the download is complete, hide the activity indicator, unhide the tableView, and reload the data
+    func downloadComplete()
     {
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async
+        {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.tableView.reloadData()
+            self.tableView.isHidden = false
+        }
     }
     
     //In case the delegate was removed by the StopDetails ViewController
@@ -81,7 +74,18 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     {
         controller.delegate = self
     }
+
+    //MARK: Actions
+
+    @IBAction func stationDetailsButtonPressed()
+    {
+        performSegue(withIdentifier: "stationDetailsSegue", sender: nil)
+    }
     
+    @IBAction func backToMapButton()
+    {
+        dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -93,6 +97,7 @@ class ScheduledServicesViewController: UIViewController, UpdateTableDataDelegate
     }
 }
 
+//MARK: Table View Delegate
 //Uses section headers for spacing between cell rows (sections)
 extension ScheduledServicesViewController: UITableViewDelegate
 {

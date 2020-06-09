@@ -2,7 +2,7 @@
 //  SearchResultsCell.swift
 //  MakingTracks
 //
-//  Created by user169372 on 6/4/20.
+//  Created by John on 6/4/20.
 //  Copyright © 2020 John. All rights reserved.
 //
 
@@ -10,36 +10,19 @@ import UIKit
 
 class SearchResultCell: UITableViewCell
 {
-
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    //MARK: Outlets
+    
     @IBOutlet weak var stopTypeImage: UIImageView!
     @IBOutlet weak var stopDistanceLabel: UILabel!
     @IBOutlet weak var stopSuburbLabel: UILabel!
     @IBOutlet weak var stopNameLabel: UILabel!
 
-    func configureCell(for result: TransportStopMapAnnotation)
-    {
-        stopNameLabel.text = result.name
-        stopSuburbLabel.text = result.suburb
-        
-        if result.distance != 0
-        {
-            let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = 2
-            formatter.minimumFractionDigits = 2
-            
-            stopDistanceLabel.text = formatter.string(for: result.distance)
-            stopDistanceLabel.text? += " km"
-            stopDistanceLabel.isHidden = false
-        }
-        transportTypeSettings(transportType: result.routeType)
-    }
-    
+    //MARK: Private Methods
+    //Changes the cell image and stop name label color depending on the transport type for this stop
     private func transportTypeSettings(transportType: TransportType)
     {
         switch transportType
@@ -64,9 +47,26 @@ class SearchResultCell: UITableViewCell
             stopTypeImage.image = UIImage(named: "NightBus")
             stopNameLabel.textColor = Constants.UIConstants.ColorConstants.NightBusBlue
         }
+    }
+    
+    //MARK: Public Methods
+    ///Sets cell labels and image for a given TransportStop
+    func configureCell(for result: TransportStop)
+    {
+        stopNameLabel.text = result.name
+        stopSuburbLabel.text = result.suburb
         
-        //stopSuburbLabel.textColor = stopNameLabel.textColor
-        //stopDistanceLabel.textColor = stopNameLabel.textColor
-        
+        //Only show the distance label if valid distance data was returned (ie, non-zero)
+        if result.distance != 0
+        {
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
+            
+            stopDistanceLabel.text = formatter.string(for: result.distance)
+            stopDistanceLabel.text? += " km"
+            stopDistanceLabel.isHidden = false
+        }
+        transportTypeSettings(transportType: result.routeType)
     }
 }
